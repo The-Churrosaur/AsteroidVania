@@ -291,6 +291,9 @@ func update_movement_animation():
 			animator.face_direction(1, true, 0.01)
 		else:
 			animator.face_direction(-1, true, 0.01)
+	
+	# test force facing
+#	animator.face_direction(-1, true, 0.01)
 
 
 

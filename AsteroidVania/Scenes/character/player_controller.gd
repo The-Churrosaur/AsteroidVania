@@ -134,10 +134,8 @@ func jump():
 	
 	invul(invul_time)
 	
-	# shake camera make this a trigger from kinchar
-	if !character.on_platform:
-		camera.shaker.shake_rot(0.02, 0.15, 0.3)
-		camera.shaker.shake_pos(20, 0.15, 0.3)
+	camera.shaker.shake_rot(0.02, 0.15, 0.3)
+	camera.shaker.shake_pos(20, 0.15, 0.3)
 	
 	character.get_node("JetLight").enabled = true
 	print("jetflash")
@@ -204,6 +202,14 @@ func on_player_enter_platform(platform, normal : Vector2):
 		
 		magwalk_left = camera_relative_vector(Vector2.LEFT, player_rot)
 		magwalk_right = magwalk_left * -1
+	
+	# handle screenshake effect - todo make consts
+	var player_vel_squared = character.velocity.length_squared()
+	if player_vel_squared > 30 * 30:
+		camera.shaker.shake_rot(0.01, 0.1, 0.3)
+		var mult = 0.00001
+		var amp = player_vel_squared * mult
+		camera.shaker.shake_pos(amp, 0.1, 0.3)
 
 func on_player_left_platform():
 	pass
@@ -246,6 +252,7 @@ func equip_weapon(new_weapon : Node2D):
 	weapon = new_weapon
 	# equip to rig
 	rig.parent_to_left_hand(new_weapon.get_path())
+#	rig.set_ik_right_hand(new_weapon.get_path())
 	weapon.visible = true # 'unsheathe' for now
 
 func de_equip_weapon():

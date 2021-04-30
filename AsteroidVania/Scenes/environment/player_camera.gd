@@ -28,15 +28,6 @@ func _process(delta):
 		rotation = lerp_angle(rotation, player.rotation, follow_lerp_angle)
 
 func on_platform_entered(platform, normal):
-	
-	# handle screenshake effect - todo make consts
-	var player_vel_squared = player.velocity.length_squared()
-	if player_vel_squared > 30 * 30:
-		shaker.shake_rot(0.01, 0.1, 0.3)
-		var mult = 0.00001
-		var amp = player_vel_squared * mult
-		shaker.shake_pos(amp, 0.1, 0.3)
-		
 	if !follow_on_magwalk: following_rotation = false
 
 func on_platform_left():

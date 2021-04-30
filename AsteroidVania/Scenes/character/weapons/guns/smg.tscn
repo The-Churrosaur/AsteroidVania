@@ -31,3 +31,6 @@ enabled = false
 texture_scale = 1.0
 script = ExtResource( 4 )
 weapon_path = NodePath("..")
+
+[node name="Handle" type="Node2D" parent="."]
+position = Vector2( 15.4361, -1.79489 )

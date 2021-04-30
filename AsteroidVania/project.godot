@@ -123,6 +123,11 @@ _global_script_classes=[ {
 "class": "Weapon",
 "language": "GDScript",
 "path": "res://Scenes/character/weapons/weapon.gd"
+}, {
+"base": "Node2D",
+"class": "ik_2d",
+"language": "GDScript",
+"path": "res://Scenes/utils/ik_2d.gd"
 } ]
 _global_script_class_icons={
 "BouncingBullet": "",
@@ -147,7 +152,8 @@ _global_script_class_icons={
 "Rig": "",
 "ScreenShaker": "",
 "TargetManager": "",
-"Weapon": ""
+"Weapon": "",
+"ik_2d": ""
 }
 
 [application]

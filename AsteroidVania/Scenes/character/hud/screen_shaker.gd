@@ -5,6 +5,7 @@ extends Node
 
 export var camera_path : NodePath = "../"
 export var shake_lerp = 0.4
+export var shake_falloff = 0.9
 
 onready var camera : Camera2D = get_node(camera_path)
 onready var frequency_timer : Timer = $FrequencyTimer
@@ -37,8 +38,11 @@ func shake_camera(rot, pos):
 
 func shake_rot(amplitude, frequency, duration):
 	
-	print("shaking rot")
 	rot_amp_target = amplitude
+	# randomize direction
+	if (rand.randi_range(0,1)):
+		print("reversing rand")
+		rot_amp_target *= -1
 	frequency_timer.start(frequency)
 	
 	shaking_rot = true
@@ -47,7 +51,6 @@ func shake_rot(amplitude, frequency, duration):
 
 func shake_pos(amplitude, frequency, duration):
 	
-	print("shaking pos")
 	pos_amp_target = Vector2(amplitude, amplitude)
 	frequency_timer.start(frequency)
 	

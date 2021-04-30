@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/utils/ik_2d.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/levels/level_utils/ik_test_target.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/levels/level_utils/ik_test_line.gd" type="Script" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="dolly" type="Node2D" parent="."]
+position = Vector2( 230.049, 82.4097 )
+rotation = 0.479004
+scale = Vector2( -0.6, 0.6 )
+
+[node name="Line2D" type="Line2D" parent="dolly"]
+points = PoolVector2Array( 0, 0, 20, 20, 0, 0 )
+width = 2.0
+default_color = Color( 0.4, 0.501961, 1, 1 )
+texture = ExtResource( 4 )
+texture_mode = 1
+script = ExtResource( 3 )
+
+[node name="Shoulder" type="Node2D" parent="dolly"]
+position = Vector2( 0.440399, 73.063 )
+
+[node name="Elbow" type="Node2D" parent="dolly/Shoulder"]
+position = Vector2( 78.76, 0 )
+
+[node name="Hand" type="Node2D" parent="dolly/Shoulder/Elbow"]
+position = Vector2( 81.7231, 0 )
+
+[node name="IK2D" parent="dolly/Shoulder/Elbow/Hand" instance=ExtResource( 1 )]
+shoulder_path = NodePath("../../../../../dolly/Shoulder")
+elbow_path = NodePath("../../../../../dolly/Shoulder/Elbow")
+hand_path = NodePath("../../../../../dolly/Shoulder/Elbow/Hand")
+
+[node name="Sprite3" type="Sprite" parent="dolly/Shoulder/Elbow/Hand"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="dolly/Shoulder/Elbow"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="dolly/Shoulder"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
+
+[node name="Target" type="Node2D" parent="."]
+position = Vector2( 230.049, 82.4097 )
+script = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="Target"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
