@@ -269,6 +269,9 @@ func update_movement_animation():
 	# this is eh and buggy, figure out some one-time signal for when magwalking
 	# maybe? or is keeping everything centralized here in a tree better
 	
+	if animator == null:
+		return
+	
 	if on_platform:
 		
 		#!floating

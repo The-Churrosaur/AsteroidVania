@@ -36,20 +36,20 @@ position = Vector2( 0.17944, -16.9724 )
 scale = Vector2( 0.6, 0.6 )
 
 [node name="hip" parent="KinematicCharacter/Rig/Dolly/Skeleton2D" index="0"]
-position = Vector2( 86.0452, 32.8525 )
+position = Vector2( 86.0482, 32.9174 )
 
 [node name="hipL" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip" index="1"]
-rotation = -0.0968701
+rotation = -0.0984449
 
 [node name="kneeL" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip/hipL" index="0"]
-rotation = -0.612422
+rotation = -0.613604
 
 [node name="hipR" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip" index="2"]
-position = Vector2( -6.80641, 6.2348 )
-rotation = 0.655955
+position = Vector2( -6.75549, 6.04111 )
+rotation = 0.645693
 
 [node name="kneeR" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip/hipR" index="0"]
-rotation = -1.43529
+rotation = -1.44702
 
 [node name="Hitbox" type="Area2D" parent="KinematicCharacter"]
 collision_layer = 18
@@ -115,7 +115,7 @@ scale = Vector2( 0.25, 0.25 )
 player_path = NodePath("../KinematicCharacter")
 
 [node name="CharacterHealth" parent="." instance=ExtResource( 12 )]
-starting_health = 10
+starting_health = 5
 
 [editable path="KinematicCharacter"]
 
