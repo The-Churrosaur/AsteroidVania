@@ -1,7 +1,7 @@
 class_name Bullet
 extends RigidBody2D
 
-export var impact_impulse = 100000
+export var impact_impulse = 100
 export var life_time = 5.0
 export var activation_time = 0.2 # dead time before bullet activates
 export var damage = 1
@@ -56,8 +56,18 @@ func on_body_entered(body):
 	impact(body)
 
 func impact(body):
+	if body is RigidBody2D: 
+		apply_impact_impulse(body)
+	elif body.is_in_group("DummySlaved") and body.get_dummy():
+		apply_impact_impulse(body.get_dummy())
+		
 	emit_signal("bullet_impacted", self, body)
 	destroy()
+
+func apply_impact_impulse(body : RigidBody2D):
+	var local_offset = global_position - body.global_position
+	var impulse_vec = linear_velocity.normalized() * impact_impulse
+	body.apply_impulse(local_offset, impulse_vec)
 
 func destroy():
 	emit_signal("bullet_removed", self, self.name)

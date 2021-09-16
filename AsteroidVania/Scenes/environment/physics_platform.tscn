@@ -4,6 +4,7 @@
 [ext_resource path="res://Scenes/environment/physics_platform.gd" type="Script" id=2]
 
 [node name="PhysicsPlatform" type="KinematicBody2D" groups=[
+"DummySlaved",
 "Platform",
 "WalkableSurface",
 ]]

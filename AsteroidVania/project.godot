@@ -175,8 +175,8 @@ CollisionLayers="*res://Scenes/levels/level_utils/collision_layers.gd"
 
 [display]
 
-window/size/width=480
-window/size/height=240
+window/size/width=960
+window/size/height=480
 window/size/resizable=false
 window/size/fullscreen=true
 window/size/test_width=1920
@@ -243,5 +243,6 @@ ui_alt_select={
 [rendering]
 
 quality/driver/driver_name="GLES2"
-quality/2d/use_pixel_snap=true
+2d/snapping/use_gpu_pixel_snap=true
 environment/default_environment="res://default_env.tres"
+quality/2d/use_pixel_snap=true

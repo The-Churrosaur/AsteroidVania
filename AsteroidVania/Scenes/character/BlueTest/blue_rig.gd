@@ -32,14 +32,15 @@ func rotate_arm_aiming(global_point : Vector2):
 	var angle
 	
 	# hacky because of mirror flipping
-	if dolly.scale.x <= 0:
-		var target_flipped = Vector2(- to_target.x, to_target.y)
-		angle = target_flipped.angle() + PI
-	else:
-		angle = to_target.angle()
-		left_shoulder.global_rotation = to_target.angle()
+#	if dolly.scale.x <= 0:
+#		var target_flipped = Vector2(- to_target.x, to_target.y)
+#		angle = target_flipped.angle() + PI
+#	else:
+#		angle = to_target.angle()
+#		left_shoulder.global_rotation = to_target.angle()
 	
+	angle = left_shoulder.global_position.angle_to_point(global_point) + PI
 	left_shoulder.global_rotation = angle
-#	right_shoulder.global_rotation = (angle + PI)
-#	right_elbow.global_rotation = abs(angle / PI)
+	
+	if dolly.scale.x <= 0 : left_shoulder.rotation *= -1
 

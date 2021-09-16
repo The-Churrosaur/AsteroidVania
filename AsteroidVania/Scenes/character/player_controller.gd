@@ -221,7 +221,9 @@ func on_player_hit(body):
 		print("PLAYER SHOT")
 		temp_hitflash()
 		health.change_health(-1)
-		body.impact(character)
+		body.impact(character) # doesn't go through usual channels
+		
+		if character.get_dummy() : body.apply_impact_impulse(character.get_dummy())
 		
 		camera.shaker.shake_rot(0.02, 0.11, 0.5)
 		camera.shaker.shake_pos(10, 0.11, 0.5)

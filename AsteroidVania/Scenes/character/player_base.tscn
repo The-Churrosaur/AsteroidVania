@@ -18,7 +18,9 @@
 [sub_resource type="CapsuleShape2D" id=1]
 height = 30.0
 
-[node name="PlayerBase" type="Node2D"]
+[node name="PlayerBase" type="Node2D" groups=[
+"PlayerBase",
+]]
 script = ExtResource( 10 )
 player_path = NodePath("KinematicCharacter")
 
@@ -36,20 +38,20 @@ position = Vector2( 0.17944, -16.9724 )
 scale = Vector2( 0.6, 0.6 )
 
 [node name="hip" parent="KinematicCharacter/Rig/Dolly/Skeleton2D" index="0"]
-position = Vector2( 86.0482, 32.9174 )
+position = Vector2( 86.2243, 36.7161 )
 
 [node name="hipL" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip" index="1"]
-rotation = -0.0984449
+rotation = -0.190637
 
 [node name="kneeL" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip/hipL" index="0"]
-rotation = -0.613604
+rotation = -0.68277
 
 [node name="hipR" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip" index="2"]
-position = Vector2( -6.75549, 6.04111 )
-rotation = 0.645693
+position = Vector2( -6.46982, 4.95449 )
+rotation = 0.588123
 
 [node name="kneeR" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip/hipR" index="0"]
-rotation = -1.44702
+rotation = -1.51283
 
 [node name="Hitbox" type="Area2D" parent="KinematicCharacter"]
 collision_layer = 18
@@ -94,6 +96,10 @@ shooter_path = NodePath("..")
 visible = false
 shooter_path = NodePath("..")
 
+[node name="Sprite3" type="Sprite" parent="KinematicCharacter"]
+visible = false
+texture = ExtResource( 8 )
+
 [node name="PlayerController" parent="." instance=ExtResource( 4 )]
 character_path = NodePath("../KinematicCharacter")
 anim_path = NodePath("../KinematicCharacter/Rig/AnimationTree")
@@ -107,6 +113,9 @@ camera_path = NodePath("../PlayerCamera")
 player_path = NodePath("../KinematicCharacter")
 health_bar_path = NodePath("Hud/HealthBar")
 
+[node name="JumpPips" parent="Hud/Hud/MarginContainer" index="0"]
+margin_right = 960.0
+
 [node name="HealthBar" parent="Hud/Hud" index="1"]
 char_health_path = NodePath("../../../CharacterHealth")
 
@@ -118,7 +127,5 @@ player_path = NodePath("../KinematicCharacter")
 starting_health = 5
 
 [editable path="KinematicCharacter"]
-
 [editable path="KinematicCharacter/Rig"]
-
 [editable path="Hud"]

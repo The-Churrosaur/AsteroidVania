@@ -106,6 +106,8 @@ func on_player_hit(body):
 		print("ENEMY HIT")
 		health.change_health(-body.damage)
 		temp_hitflash()
+		
+		if character.get_dummy() : body.apply_impact_impulse(character.get_dummy())
 
 # RAYCAST
 

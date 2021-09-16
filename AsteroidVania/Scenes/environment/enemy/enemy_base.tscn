@@ -39,20 +39,20 @@ position = Vector2( 0, -16.3484 )
 scale = Vector2( 0.6, 0.6 )
 
 [node name="hip" parent="KinematicCharacter/Rig/Dolly/Skeleton2D" index="0"]
-position = Vector2( 86.2848, 38.02 )
+position = Vector2( 86.1185, 34.4336 )
 
 [node name="hipL" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip" index="1"]
-rotation = -0.222283
+rotation = -0.135243
 
 [node name="kneeL" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip/hipL" index="0"]
-rotation = -0.706512
+rotation = -0.641211
 
 [node name="hipR" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip" index="2"]
-position = Vector2( -6.06052, 3.39767 )
-rotation = 0.505641
+position = Vector2( -6.88201, 6.52236 )
+rotation = 0.67119
 
 [node name="kneeR" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip/hipR" index="0"]
-rotation = -1.60712
+rotation = -1.41787
 
 [node name="Muzzle" type="Node2D" parent="KinematicCharacter/Rig/Dolly" index="4"]
 position = Vector2( -72.3635, -41.2215 )
@@ -109,8 +109,7 @@ margin_right = 200.0
 enabled = true
 
 [node name="CharacterHealth" parent="." instance=ExtResource( 11 )]
-starting_health = 3
+starting_health = 5
 
 [editable path="KinematicCharacter/Rig"]
-
 [editable path="KinematicCharacter/HealthBar"]

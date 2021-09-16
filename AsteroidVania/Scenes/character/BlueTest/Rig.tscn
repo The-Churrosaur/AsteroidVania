@@ -132,6 +132,7 @@ blend_point_1/node = SubResource( 12 )
 blend_point_1/pos = 0.9
 
 [sub_resource type="AnimationNodeBlendTree" id=14]
+graph_offset = Vector2( -349.867, 13.6458 )
 nodes/facing_blend/node = SubResource( 3 )
 nodes/facing_blend/position = Vector2( 210, 40 )
 nodes/floating/node = SubResource( 4 )
@@ -147,7 +148,7 @@ nodes/left_right_blend/position = Vector2( 200, 220 )
 nodes/output/position = Vector2( 590, 110 )
 nodes/run_stand_blend/node = SubResource( 13 )
 nodes/run_stand_blend/position = Vector2( -250, 40 )
-node_connections = [ "output", 0, "gun_rotate_blend", "floating_standing_blend", 0, "run_stand_blend", "floating_standing_blend", 1, "floating", "facing_blend", 0, "floating_standing_blend", "facing_blend", 1, "left_right_blend", "gun_rotate_blend", 0, "facing_blend", "gun_rotate_blend", 1, "gun_rotate" ]
+node_connections = [ "output", 0, "gun_rotate_blend", "gun_rotate_blend", 0, "facing_blend", "gun_rotate_blend", 1, "gun_rotate", "floating_standing_blend", 0, "run_stand_blend", "floating_standing_blend", 1, "floating", "facing_blend", 0, "floating_standing_blend", "facing_blend", 1, "left_right_blend" ]
 
 [node name="Rig" type="Node2D"]
 scale = Vector2( -1, 1 )
@@ -233,7 +234,7 @@ bones = [ NodePath("hip"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePa
 position = Vector2( -86.3438, -45.5328 )
 
 [node name="hip" type="Bone2D" parent="Dolly/Skeleton2D"]
-position = Vector2( 86.2927, 38.1913 )
+position = Vector2( 86.196, 36.1059 )
 rotation = -0.257991
 rest = Transform2D( 1, 0, 0, 1, 79.0557, 43.3478 )
 
@@ -271,6 +272,7 @@ __meta__ = {
 [node name="IK2D" parent="Dolly/Skeleton2D/hip/chest/shoulderL/elbowL/handL" instance=ExtResource( 14 )]
 shoulder_path = NodePath("../../..")
 elbow_path = NodePath("../..")
+hand_path = NodePath("..")
 calculate_ik = false
 
 [node name="shoulderR" type="Bone2D" parent="Dolly/Skeleton2D/hip/chest"]
@@ -302,6 +304,9 @@ use_global_coordinates = false
 [node name="IK2D" parent="Dolly/Skeleton2D/hip/chest/shoulderR/elbowR/handR" instance=ExtResource( 14 )]
 shoulder_path = NodePath("../../..")
 elbow_path = NodePath("../..")
+hand_path = NodePath("..")
+target_path = NodePath("../../../../shoulderL/elbowL/handL")
+lengths_on_startup = true
 
 [node name="neck" type="Bone2D" parent="Dolly/Skeleton2D/hip/chest"]
 position = Vector2( -0.793793, -12.6782 )
@@ -315,7 +320,7 @@ rest = Transform2D( 1, 0, 0, 1, 0.715363, -7.95486 )
 
 [node name="hipL" type="Bone2D" parent="Dolly/Skeleton2D/hip"]
 position = Vector2( 1.27493, 4.47816 )
-rotation = -0.226439
+rotation = -0.175829
 rest = Transform2D( 1, 0, 0, 1, 4.1713, 1.55989 )
 __meta__ = {
 "_edit_bone_": true,
@@ -324,7 +329,7 @@ __meta__ = {
 
 [node name="kneeL" type="Bone2D" parent="Dolly/Skeleton2D/hip/hipL"]
 position = Vector2( 5.23389, 23.9714 )
-rotation = -0.70963
+rotation = -0.67166
 rest = Transform2D( 0.997978, 0.0635535, -0.0635535, 0.997978, 5.23389, 23.9714 )
 __meta__ = {
 "_edit_bone_": true
@@ -347,8 +352,8 @@ __meta__ = {
 }
 
 [node name="hipR" type="Bone2D" parent="Dolly/Skeleton2D/hip"]
-position = Vector2( -6.2034, 3.94115 )
-rotation = 0.534435
+position = Vector2( -6.29483, 4.28889 )
+rotation = 0.552859
 rest = Transform2D( 1, 0, 0, 1, -6.25122, 3.65421 )
 __meta__ = {
 "_edit_bone_": true,
@@ -357,7 +362,7 @@ __meta__ = {
 
 [node name="kneeR" type="Bone2D" parent="Dolly/Skeleton2D/hip/hipR"]
 position = Vector2( -5.32269, 21.896 )
-rotation = -1.5742
+rotation = -1.55314
 rest = Transform2D( 0.997978, 0.0635535, -0.0635535, 0.997978, -5.32269, 21.896 )
 __meta__ = {
 "_edit_bone_": true

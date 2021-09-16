@@ -123,6 +123,10 @@ func _physics_process(delta):
 		
 		# move
 		var collision =  move_and_collide(displacement * delta, false)
+#		var collision = move_and_collide(Vector2(5,0), false)
+		if get_parent().is_in_group("PlayerBase"):
+#			print("dummy pos: ", physics_dummy_instance.global_position)
+			print("displacement: ", displacement * delta)
 		
 		# update rotation from input (?)
 		rotation += rotational_velocity
@@ -207,15 +211,19 @@ func rotate_towards_grav():
 		rotation = lerp_angle(rotation, target.angle() - PI/2, gravity_ang_lerp)
 
 # for rotating platforms, calculates surface velocity and matches
+# appends platform linear velocity for all platforms
 func match_surface_velocity() -> bool:
 	
 	var radius = position - platform.position
 	var angular_velocity
+	var linear_velocity
 	
 	if platform is RigidBody2D:
 		angular_velocity = platform.angular_velocity
-	if platform.is_in_group("WalkableSurface"):
-		angular_velocity = platform.physics_dummy_instance.angular_velocity
+		linear_velocity = platform.linear_velocity
+	elif platform.is_in_group("WalkableSurface"):
+		angular_velocity = platform.get_dummy().angular_velocity
+		linear_velocity = platform.get_dummy().linear_velocity
 	else:
 		return false
 	
@@ -224,6 +232,7 @@ func match_surface_velocity() -> bool:
 	var surface_vel = - radius.length() * angular_velocity * tangent_normal
 	displacement += surface_vel
 	
+	displacement += linear_velocity
 	return true
 
 func update_normal():
@@ -367,6 +376,9 @@ func despawn_physics_dummy():
 		physics_dummy_spawned = false
 	else:
 		print("physics dummy already null")
+
+func get_dummy():
+	return physics_dummy_instance
 
 func on_dummy_enter_grav(area):
 	in_gravity = true

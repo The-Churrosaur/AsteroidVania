@@ -60,3 +60,7 @@ func setup_dummy():
 	physics_dummy_instance.linear_velocity = initial_velocity
 	physics_dummy_instance.angular_velocity = initial_velocity_angular
 
+# api to DummySlaved group
+func get_dummy(): 
+	if physics_dummy_instance: return physics_dummy_instance
+	else: return null

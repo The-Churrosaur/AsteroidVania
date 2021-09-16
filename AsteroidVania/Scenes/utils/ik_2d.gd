@@ -5,6 +5,8 @@ extends Node2D
 # adjust rotation of two given nodes to hit target node
 # assumes nodes are parented shoulder -> elbow -> hand
 
+# janky, bad, simple
+
 export var shoulder_path : NodePath
 export var elbow_path : NodePath
 export var hand_path : NodePath
@@ -12,6 +14,7 @@ export var target_path : NodePath
 
 export var lengths_on_startup = false
 export var calculate_ik = true
+export var flip_solution = true
 
 onready var shoulder : Node2D = get_node(shoulder_path)
 onready var elbow : Node2D = get_node(elbow_path)
@@ -63,8 +66,12 @@ func calculate():
 	if target == null : return
 #	print("calculating ik")
 	
+	var target_pos = target.global_position
+	
 	# get c^2
-	var length_c_2 = (shoulder.global_position - target.global_position).length_squared()
+	var length_c_2 = (shoulder.global_position - target_pos).length_squared()
+#	$test1.global_position = target_pos
+#	$test2.global_position = shoulder.global_position
 	var length_c = sqrt(length_c_2)
 	var length_a_2 = length_a * length_a
 	var length_b_2 = length_b * length_b
@@ -76,25 +83,22 @@ func calculate():
 	
 	# elbow
 	var cos_C = (length_a_2 + length_b_2 - length_c_2) / (2 * length_a * length_b)
-	elbow.rotation = PI - acos(cos_C)
-	elbow.rotation -= elbow_offset_angle
-	# flip if scale flipped
-	if elbow.global_scale.y <= 0:
-		elbow.rotation = - elbow.rotation
+	elbow.rotation = PI + acos(cos_C)
+	if flip_solution : elbow.rotation *= -1
+#	elbow.rotation -= elbow_offset_angle
 	
 	# shoulder
 	
 	var cos_B = (length_a_2 + length_c_2 - length_b_2) / (2 * length_a * length_c)
 	
 	# point to target (by rotation, relative to parent)
-	var target_relative = shoulder.get_parent().to_local(target.global_position)
+	var target_relative = shoulder.get_parent().to_local(target_pos)
 	shoulder.rotation = shoulder.position.angle_to_point(target_relative)
 	# offset by result
-	shoulder.rotation -= acos(cos_B)
+	if flip_solution : shoulder.rotation -= acos(cos_B)
+	else: shoulder.rotation += acos(cos_B)
 	shoulder.rotation += PI
 	shoulder.rotation -= shoulder_offset_angle
-	# flip if scale flipped
-	if shoulder.global_scale.y <= 0:
-#		print("scale flipped")
-		shoulder.rotation = - shoulder.rotation
+	
+#	if flip_solution : shoulder.rotation *= -1
 
