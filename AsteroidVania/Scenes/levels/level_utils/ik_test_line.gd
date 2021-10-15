@@ -4,8 +4,10 @@ onready var shoulder = get_node("../Shoulder")
 onready var elbow = get_node("../Shoulder/Elbow")
 onready var hand = get_node("../Shoulder/Elbow/Hand")
 
+
 func _ready():
 	pass
+
 
 func _physics_process(delta):
 	set_point_position(0, to_local(shoulder.global_position))

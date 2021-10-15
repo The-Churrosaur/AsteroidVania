@@ -4,9 +4,11 @@ extends Sprite
 
 onready var player = get_parent()
 
+
 func _ready():
 	player.connect("player_hit", self, "on_hit")
 	visible = false
+
 
 func on_hit(body):
 	visible = true

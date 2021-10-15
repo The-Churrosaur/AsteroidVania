@@ -112,7 +112,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Rig",
 "language": "GDScript",
-"path": "res://Scenes/character/BlueTest/rig.gd"
+"path": "res://Scenes/character/BlueTest/Rig.gd"
 }, {
 "base": "Node",
 "class": "ScreenShaker",
