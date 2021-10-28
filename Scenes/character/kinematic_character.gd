@@ -125,9 +125,6 @@ func _physics_process(delta):
 		# move
 		var collision = move_and_collide(displacement * delta, false)
 #		var collision = move_and_collide(Vector2(5,0), false)
-		if get_parent().is_in_group("PlayerBase"):
-#			print("dummy pos: ", physics_dummy_instance.global_position)
-			print("displacement: ", displacement * delta)
 
 		# update rotation from input (?)
 		rotation += rotational_velocity
