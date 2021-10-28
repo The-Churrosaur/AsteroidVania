@@ -25,6 +25,7 @@ player_path = NodePath("../EnemyBase/KinematicCharacter")
 [node name="EnemyController" parent="." instance=ExtResource( 4 )]
 anim_path = NodePath("../KinematicCharacter/Rig/AnimationTree")
 raycast_path = NodePath("../KinematicCharacter/RayCast2D")
+enabled = false
 teleport_distance = 1000
 
 [node name="KinematicCharacter" parent="." instance=ExtResource( 9 )]
@@ -39,20 +40,20 @@ position = Vector2( 0, -16.3484 )
 scale = Vector2( 0.6, 0.6 )
 
 [node name="hip" parent="KinematicCharacter/Rig/Dolly/Skeleton2D" index="0"]
-position = Vector2( 86.1185, 34.4336 )
+position = Vector2( 86.3186, 38.7493 )
 
 [node name="hipL" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip" index="1"]
-rotation = -0.135243
+rotation = -0.239981
 
 [node name="kneeL" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip/hipL" index="0"]
-rotation = -0.641211
+rotation = -0.71979
 
 [node name="hipR" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip" index="2"]
-position = Vector2( -6.88201, 6.52236 )
-rotation = 0.67119
+position = Vector2( -6.06052, 3.39767 )
+rotation = 0.505641
 
 [node name="kneeR" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip/hipR" index="0"]
-rotation = -1.41787
+rotation = -1.60712
 
 [node name="Muzzle" type="Node2D" parent="KinematicCharacter/Rig/Dolly" index="4"]
 position = Vector2( -72.3635, -41.2215 )

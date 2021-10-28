@@ -10,6 +10,5 @@ jump_to_camera = false
 [node name="PlayerCamera" type="Camera2D" parent="."]
 rotating = true
 current = true
-zoom = Vector2( 2.5, 2.5 )
 
 [node name="ScreenShaker" parent="PlayerCamera" instance=ExtResource( 2 )]

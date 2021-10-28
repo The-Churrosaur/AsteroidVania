@@ -10,6 +10,7 @@ export var health_path: NodePath = "../CharacterHealth"
 export var loot_spawner_path: NodePath = "../KinematicCharacter/LootSpawner"
 export var raycast_path: NodePath = "../KinematicCharacter/Raycast2D"
 
+export var enabled = true
 export var teleport_distance = 2000
 
 onready var character = get_node(character_path)
@@ -48,7 +49,7 @@ func _ready():
 
 
 func _process(delta):
-	process_logic()
+	if enabled: process_logic()
 
 
 func process_logic():
