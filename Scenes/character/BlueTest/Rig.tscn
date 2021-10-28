@@ -404,7 +404,6 @@ anims/WalkDiscrete = ExtResource( 5 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 14 )
 anim_player = NodePath("../Dolly/AnimationPlayer")
-active = true
 parameters/facing_blend/blend_amount = 1.0
 parameters/floating_standing_blend/blend_amount = 1.0
 parameters/gun_rotate_blend/blend_amount = 0.0
