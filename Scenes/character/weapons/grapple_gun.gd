@@ -90,14 +90,14 @@ func end_grapple():
 	line.visible = false
 	sprite.visible = false
 	$Sprite2.visible = false
-	player.maneuver_enabled = false
+	#player.maneuver_enabled = false
 
 
 func start_grapple():
 	rope_length = grapple_length
 	is_grappling = true
 	line.visible = true
-	player.maneuver_enabled = true
+	#player.maneuver_enabled = true
 
 	# temp invul on start grapple (see how it feels)
 	controller.invul(invul_time)

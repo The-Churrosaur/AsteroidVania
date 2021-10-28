@@ -41,6 +41,9 @@ var shooting = false
 var magwalk_left = Vector2.LEFT
 var magwalk_right = Vector2.RIGHT
 
+var jumpDir_horizontal = ""
+var jumpDir_vertical = ""
+	
 
 func _ready():
 	# character connections
@@ -61,31 +64,42 @@ func _ready():
 # inputs do be handled here
 func _input(event):
 	# magwalk and boost
+	#var jumpDir_horizontal = ""
+	#var jumpDir_vertical = ""
+
 
 	if event.is_action_pressed("ui_left", false):
 		character.add_magwalk_direction(magwalk_left)
 		character.add_maneuver_direction(Vector2.LEFT)
+		jumpDir_horizontal = "left"
 	if event.is_action_released("ui_left"):
 		character.null_magwalk_direction()
 		character.add_maneuver_direction(Vector2.RIGHT)
+		jumpDir_horizontal = ""
 
 	if event.is_action_pressed("ui_right", false):
 		character.add_magwalk_direction(magwalk_right)
 		character.add_maneuver_direction(Vector2.RIGHT)
+		jumpDir_horizontal = "right"
 	if event.is_action_released("ui_right"):
 		character.null_magwalk_direction()
 		character.add_maneuver_direction(Vector2.LEFT)
+		jumpDir_horizontal = ""
 
 	if event.is_action_pressed("ui_up", false):
 		character.add_maneuver_direction(Vector2.UP)
 		character.leave_platform(100)
+		jumpDir_vertical = "up"
 	if event.is_action_released("ui_up"):
 		character.add_maneuver_direction(Vector2.DOWN)
+		jumpDir_vertical = ""
 
 	if event.is_action_pressed("ui_down", false):
 		character.add_maneuver_direction(Vector2.DOWN)
+		jumpDir_vertical = "down"
 	if event.is_action_released("ui_down"):
 		character.add_maneuver_direction(Vector2.UP)
+		jumpDir_vertical = ""
 
 	if event.is_action_pressed("ui_rotate_left"):
 		character.rotational_velocity = -character.rotational_speed
@@ -130,7 +144,18 @@ func _input(event):
 
 # input handler helpers
 func jump():
-	character.jump_towards = get_global_mouse_position()
+	#character.jump_towards = get_global_mouse_position()
+	
+	character.jump_towards = character.global_position + Vector2(1, 0)
+	
+	print(get_global_mouse_position())
+	
+	#Vector2 characterJump = Vector2.Zero()
+	
+	if (jumpDir_horizontal == "right"):
+		
+		var f = 4
+	
 	character.should_jump = true
 
 	invul(invul_time)
