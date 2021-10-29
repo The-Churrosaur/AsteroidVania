@@ -49,7 +49,8 @@ func _ready():
 
 
 func _process(delta):
-	if enabled: process_logic()
+	if enabled:
+		process_logic()
 
 
 func process_logic():

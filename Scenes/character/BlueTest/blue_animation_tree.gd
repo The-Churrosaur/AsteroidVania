@@ -9,6 +9,7 @@ signal flipping_rig
 func _ready():
 	active = true
 
+
 func face_direction(dir: float = 0.0, tween_blend = false, tween_time = 0.2):
 	if tween_blend:
 		tween.interpolate_property(

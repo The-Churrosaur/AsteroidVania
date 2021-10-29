@@ -33,9 +33,11 @@ func _physics_process(delta):
 	if physics_dummy_instance == null:
 		print("dummy is null!")
 		return
-	
-	if is_kinematic : physics_dummy_instance.mode = RigidBody2D.MODE_KINEMATIC
-	else : physics_dummy_instance.mode = RigidBody2D.MODE_RIGID
+
+	if is_kinematic:
+		physics_dummy_instance.mode = RigidBody2D.MODE_KINEMATIC
+	else:
+		physics_dummy_instance.mode = RigidBody2D.MODE_RIGID
 
 	rotation = physics_dummy_instance.rotation
 	position = lerp(position, physics_dummy_instance.position, 0.9)

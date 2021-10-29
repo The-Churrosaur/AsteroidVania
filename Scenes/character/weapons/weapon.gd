@@ -48,6 +48,7 @@ func _ready():
 	# register with handler
 	bullet_handler.register_gun(self, name)  # TODO guid?
 
+
 # internal, instantly fires projectile
 func fire_projectile():
 	# spawn projectile
