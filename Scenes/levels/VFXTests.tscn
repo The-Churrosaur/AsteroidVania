@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/character/Flashlight.gd" type="Script" id=1]
+[ext_resource path="res://assets/flashlight.png" type="Texture" id=3]
+[ext_resource path="res://assets/background2.jpg" type="Texture" id=4]
+[ext_resource path="res://Scenes/utils/ScrollTexture.gd" type="Script" id=5]
+[ext_resource path="res://assets/frame2.png" type="Texture" id=7]
+
+[sub_resource type="CanvasItemMaterial" id=3]
+light_mode = 2
+
+[sub_resource type="OpenSimplexNoise" id=1]
+seed = 1
+octaves = 5
+period = 140.5
+persistence = 0.786
+lacunarity = 3.09
+
+[sub_resource type="NoiseTexture" id=2]
+seamless = true
+noise = SubResource( 1 )
+
+[sub_resource type="OccluderPolygon2D" id=4]
+polygon = PoolVector2Array( 31, 31, -31, 31, -31, -31, 31, -31 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+light_mask = 2
+position = Vector2( 308.465, 453.592 )
+texture = ExtResource( 4 )
+
+[node name="Dusty Atmosphere" type="Sprite" parent="."]
+light_mask = 1024
+material = SubResource( 3 )
+position = Vector2( -12.6747, 2.59564 )
+scale = Vector2( 4, 4 )
+texture = SubResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 25000, 25000 )
+script = ExtResource( 5 )
+direction = Vector2( 1, -1 )
+speed = 10.0
+
+[node name="Flashlight" type="Light2D" parent="."]
+light_mask = 0
+position = Vector2( 480, 240 )
+rotation = 1.5708
+scale = Vector2( 0.52, 0.65 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, -440 )
+energy = 2.0
+shadow_filter = 5
+shadow_filter_smooth = 0.8
+script = ExtResource( 1 )
+
+[node name="FlashlightFog" type="Light2D" parent="Flashlight"]
+light_mask = 0
+texture = ExtResource( 3 )
+offset = Vector2( 0, -440 )
+range_item_cull_mask = 1024
+shadow_enabled = true
+shadow_filter = 5
+shadow_filter_smooth = 0.8
+shadow_item_cull_mask = 1024
+
+[node name="PlatformHolder" type="Node2D" parent="."]
+modulate = Color( 0.47, 0.47, 0.47, 1 )
+
+[node name="Platform" type="Sprite" parent="PlatformHolder"]
+position = Vector2( 635.028, 264.555 )
+texture = ExtResource( 7 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="PlatformHolder/Platform"]
+light_mask = 1024
+occluder = SubResource( 4 )
+light_mask = 1024
+
+[node name="Platform2" type="Sprite" parent="PlatformHolder"]
+position = Vector2( 380.538, 381.097 )
+texture = ExtResource( 7 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="PlatformHolder/Platform2"]
+light_mask = 1024
+occluder = SubResource( 4 )
+light_mask = 1024
+
+[node name="Platform3" type="Sprite" parent="PlatformHolder"]
+position = Vector2( 156.967, 153.959 )
+texture = ExtResource( 7 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="PlatformHolder/Platform3"]
+light_mask = 1024
+occluder = SubResource( 4 )
+light_mask = 1024
