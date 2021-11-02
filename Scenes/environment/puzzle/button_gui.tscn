@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/environment/puzzle/button.gd" type="Script" id=1]
+
+[node name="ButtonPrefab" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+use_timer = true
+
+[node name="Button" type="Button" parent="."]
+margin_left = 199.0
+margin_top = 95.0
+margin_right = 674.0
+margin_bottom = 308.0
+action_mode = 0
+text = "Button"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
