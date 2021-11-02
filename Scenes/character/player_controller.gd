@@ -146,8 +146,24 @@ func _input(event):
 func jump():
 	#character.jump_towards = get_global_mouse_position()
 	
-	character.jump_towards = character.global_position + Vector2(1, 0)
+	var xPositionAdd = 0
+	var yPositionAdd = 0
 	
+	if (jumpDir_horizontal == "left"):
+		xPositionAdd += -10
+	elif (jumpDir_horizontal == "right"):
+		xPositionAdd += 10
+		
+	if (jumpDir_vertical == "up"):
+		yPositionAdd += -10
+	elif (jumpDir_vertical == "down"):
+		yPositionAdd += 10
+	
+	character.jump_towards = Vector2(character.position.x + xPositionAdd, character.position.y+yPositionAdd)
+	
+	#if player is grounded then left should also go left-up and right should go right-up
+	print("character position")
+	print(character.position)
 	print(get_global_mouse_position())
 	
 	#Vector2 characterJump = Vector2.Zero()
@@ -202,6 +218,7 @@ func _process(delta):
 		var view = hud.get_viewport()
 		character.rotation = (view.get_mouse_position() - view.size / 2).angle()
 
+	update()
 
 func camera_relative_vector(vector: Vector2, player_rot) -> Vector2:
 	assert(camera != null && character != null)
@@ -292,3 +309,24 @@ func de_equip_weapon():
 	weapon.release_trigger()  # just in case
 	weapon.visible = false  # 'sheathing' for now
 	weapon = null
+
+
+
+
+#This is Jake's debugging to show the points of the 8 axis of rotation
+func _draw():
+	# Your draw commands here
+	draw_circle(character.get_global_position(), 5, Color.white)
+
+	var temp2 = Vector2(character.position.x, character.position.y - 100)
+	var test1 = to_local(temp2)
+	
+	draw_circle(to_local(temp2), 5, Color.yellow)
+	draw_circle(Vector2(character.get_global_position().x + 50, character.get_global_position().y-50), 5, Color.orange)
+	draw_circle(Vector2(character.get_global_position().x + 100, character.get_global_position().y), 5, Color.orangered)
+	draw_circle(Vector2(character.get_global_position().x + 50, character.get_global_position().y+50), 5, Color.magenta)
+	draw_circle(Vector2(character.get_global_position().x, character.get_global_position().y+100), 5, Color.purple)
+	draw_circle(Vector2(character.get_global_position().x - 50, character.get_global_position().y+50), 5, Color.blue)
+	draw_circle(Vector2(character.get_global_position().x - 100, character.get_global_position().y), 5, Color.aqua)
+	draw_circle(Vector2(character.get_global_position().x -50, character.get_global_position().y-50), 5, Color.green)
+	
