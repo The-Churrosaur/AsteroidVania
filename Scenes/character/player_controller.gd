@@ -322,7 +322,7 @@ func _draw():
 	var test1 = to_local(temp2)
 	
 	draw_circle(to_local(temp2), 5, Color.yellow)
-	draw_circle(to_local(Vector2(character.get_global_position().x + 50, character.get_global_position().y-50)), 5, Color.orange)
+	draw_circle(Vector2(character.global_position.x + 50, character.global_position.y-50), 5, Color.orange)
 	draw_circle(Vector2(character.get_global_position().x + 100, character.get_global_position().y), 5, Color.orangered)
 	draw_circle(Vector2(character.get_global_position().x + 50, character.get_global_position().y+50), 5, Color.magenta)
 	draw_circle(Vector2(character.get_global_position().x, character.get_global_position().y+100), 5, Color.purple)
