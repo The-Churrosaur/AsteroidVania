@@ -114,9 +114,9 @@ func _input(event):
 	# jump
 
 	if event.is_action_pressed("ui_accept"):
-		pass
-	if event.is_action_released("ui_accept"):
 		jump()
+	if event.is_action_released("ui_accept"):
+		pass
 
 	# shoot
 
@@ -144,33 +144,16 @@ func _input(event):
 
 # input handler helpers
 func jump():
-	#character.jump_towards = get_global_mouse_position()
+
+
+	var movement = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	movement *= 100
 	
-	var xPositionAdd = 0
-	var yPositionAdd = 0
+	character.jump_towards = character.to_global(movement)
 	
-	if (jumpDir_horizontal == "left"):
-		xPositionAdd += -10
-	elif (jumpDir_horizontal == "right"):
-		xPositionAdd += 10
-		
-	if (jumpDir_vertical == "up"):
-		yPositionAdd += -10
-	elif (jumpDir_vertical == "down"):
-		yPositionAdd += 10
-	
-	character.jump_towards = Vector2(character.position.x + xPositionAdd, character.position.y+yPositionAdd)
-	
-	#if player is grounded then left should also go left-up and right should go right-up
-	print("character position")
-	print(character.position)
-	print(get_global_mouse_position())
 	
 	#Vector2 characterJump = Vector2.Zero()
-	
-	if (jumpDir_horizontal == "right"):
-		
-		var f = 4
+
 	
 	character.should_jump = true
 
