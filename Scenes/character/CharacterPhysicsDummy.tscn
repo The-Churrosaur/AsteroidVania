@@ -4,9 +4,7 @@
 
 [sub_resource type="CircleShape2D" id=1]
 
-[node name="CharacterPhysicsDummy" type="RigidBody2D" groups=[
-"Dummy",
-]]
+[node name="CharacterPhysicsDummy" type="RigidBody2D" groups=["Dummy"]]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource( 1 )

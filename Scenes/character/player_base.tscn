@@ -21,9 +21,7 @@
 [sub_resource type="CapsuleShape2D" id=1]
 height = 30.0
 
-[node name="PlayerBase" type="Node2D" groups=[
-"PlayerBase",
-]]
+[node name="PlayerBase" type="Node2D" groups=["PlayerBase"]]
 script = ExtResource( 10 )
 player_path = NodePath("KinematicCharacter")
 
@@ -129,9 +127,6 @@ camera_path = NodePath("../PlayerCamera")
 camera_path = NodePath("../PlayerCamera")
 player_path = NodePath("../KinematicCharacter")
 health_bar_path = NodePath("Hud/HealthBar")
-
-[node name="JumpPips" parent="Hud/Hud/MarginContainer" index="0"]
-margin_right = 960.0
 
 [node name="HealthBar" parent="Hud/Hud" index="1"]
 char_health_path = NodePath("../../../CharacterHealth")

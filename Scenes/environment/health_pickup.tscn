@@ -6,9 +6,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 100.0
 
-[node name="HealthPickup" type="RigidBody2D" groups=[
-"Pickup",
-]]
+[node name="HealthPickup" type="RigidBody2D" groups=["Pickup"]]
 collision_layer = 16
 collision_mask = 0
 script = ExtResource( 2 )

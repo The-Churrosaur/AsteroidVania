@@ -20,7 +20,7 @@ texture = ExtResource( 4 )
 [node name="Sprite" parent="." index="2"]
 visible = false
 
-[node name="ShrapnelGun" parent="." index="6" instance=ExtResource( 3 )]
+[node name="ShrapnelGun" parent="." index="5" instance=ExtResource( 3 )]
 bullet_prefab = ExtResource( 2 )
 muzzle_path = NodePath("Muzzle")
 shooter_path = NodePath("..")

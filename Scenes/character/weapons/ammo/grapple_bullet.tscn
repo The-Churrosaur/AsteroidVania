@@ -24,9 +24,7 @@ angle = -314.5
 angle_random = 0.15
 scale = 7.0
 
-[node name="Bullet" type="RigidBody2D" groups=[
-"Bullet",
-]]
+[node name="Bullet" type="RigidBody2D" groups=["Bullet"]]
 position = Vector2( 0.125343, 0 )
 collision_layer = 0
 linear_damp = 0.0
