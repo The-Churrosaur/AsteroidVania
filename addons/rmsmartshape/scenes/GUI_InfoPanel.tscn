@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/rmsmartshape/scenes/GUI_InfoPanel.gd" type="Script" id=2]
+
+[node name="GUI_InfoPanel" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -918.0
+margin_bottom = -486.0
+mouse_filter = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+p_lbl_idx = NodePath("Properties/IDX")
+p_lbl_tex = NodePath("Properties/Tex")
+p_lbl_width = NodePath("Properties/Width")
+p_lbl_flip = NodePath("Properties/Flip")
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 73.0
+margin_bottom = 75.0
+mouse_filter = 2
+
+[node name="Properties" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 73.0
+margin_bottom = 75.0
+mouse_filter = 2
+
+[node name="IDX" type="Label" parent="Properties"]
+margin_right = 66.0
+margin_bottom = 14.0
+text = "IDX: 13"
+
+[node name="Tex" type="Label" parent="Properties"]
+margin_top = 18.0
+margin_right = 66.0
+margin_bottom = 32.0
+text = "Tex: 1"
+
+[node name="Width" type="Label" parent="Properties"]
+margin_top = 36.0
+margin_right = 66.0
+margin_bottom = 50.0
+text = "Width: 1.0"
+
+[node name="Flip" type="Label" parent="Properties"]
+margin_top = 54.0
+margin_right = 66.0
+margin_bottom = 68.0
+text = "Flip: N"
