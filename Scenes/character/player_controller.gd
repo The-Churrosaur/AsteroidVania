@@ -315,18 +315,27 @@ func de_equip_weapon():
 
 #This is Jake's debugging to show the points of the 8 axis of rotation
 func _draw():
-	# Your draw commands here
 	draw_circle(character.get_global_position(), 5, Color.white)
 
-	var temp2 = Vector2(character.position.x, character.position.y - 100)
-	var test1 = to_local(temp2)
-	
-	draw_circle(to_local(temp2), 5, Color.yellow)
-	draw_circle(Vector2(character.global_position.x + 50, character.global_position.y-50), 5, Color.orange)
-	draw_circle(Vector2(character.get_global_position().x + 100, character.get_global_position().y), 5, Color.orangered)
-	draw_circle(Vector2(character.get_global_position().x + 50, character.get_global_position().y+50), 5, Color.magenta)
-	draw_circle(Vector2(character.get_global_position().x, character.get_global_position().y+100), 5, Color.purple)
-	draw_circle(Vector2(character.get_global_position().x - 50, character.get_global_position().y+50), 5, Color.blue)
-	draw_circle(Vector2(character.get_global_position().x - 100, character.get_global_position().y), 5, Color.aqua)
-	draw_circle(Vector2(character.get_global_position().x -50, character.get_global_position().y-50), 5, Color.green)
+	var dist = 100
+	var diagonal_dist = dist / 2
+
+	var LEFT = dist * Vector2.LEFT
+	var RIGHT = dist * Vector2.RIGHT
+	var UP = dist * Vector2.UP
+	var DOWN = dist * Vector2.DOWN
+
+	var TL = diagonal_dist * (Vector2.UP + Vector2.LEFT)
+	var TR = diagonal_dist * (Vector2.UP + Vector2.RIGHT)
+	var BL = diagonal_dist * (Vector2.DOWN + Vector2.LEFT)
+	var BR = diagonal_dist * (Vector2.DOWN + Vector2.RIGHT)
+
+	draw_circle(character.to_global(LEFT), 5, Color.orange)
+	draw_circle(character.to_global(RIGHT), 5, Color.orangered)
+	draw_circle(character.to_global(UP), 5, Color.magenta)
+	draw_circle(character.to_global(DOWN), 5, Color.purple)
+	draw_circle(character.to_global(TL), 5, Color.blue)
+	draw_circle(character.to_global(TR), 5, Color.aqua)
+	draw_circle(character.to_global(BL), 5, Color.green)
+	draw_circle(character.to_global(BR), 5, Color.yellow)
 	
