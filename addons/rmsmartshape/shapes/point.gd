@@ -2,10 +2,10 @@ tool
 extends Resource
 class_name SS2D_Point
 
-export (Vector2) var position: Vector2 setget _set_position
-export (Vector2) var point_in: Vector2 setget _set_point_in
-export (Vector2) var point_out: Vector2 setget _set_point_out
-export (Resource) var properties setget _set_properties
+export(Vector2) var position: Vector2 setget _set_position
+export(Vector2) var point_in: Vector2 setget _set_point_in
+export(Vector2) var point_out: Vector2 setget _set_point_out
+export(Resource) var properties setget _set_properties
 
 # If class members are written to, the 'changed' signal may not be emitted
 # Signal is only emitted when data is actually changed
@@ -26,7 +26,7 @@ func equals(other: SS2D_Point) -> bool:
 		return false
 	if point_out != other.point_out:
 		return false
-	print ("E! %s" % properties.equals(other.properties))
+	print("E! %s" % properties.equals(other.properties))
 	if not properties.equals(other.properties):
 		return false
 	return true
@@ -65,7 +65,7 @@ func _set_point_out(v: Vector2):
 	property_list_changed_notify()
 
 
-func _set_properties(other:SS2D_VertexProperties):
+func _set_properties(other: SS2D_VertexProperties):
 	if not properties.equals(other):
 		properties = other.duplicate(true)
 		emit_signal("changed")

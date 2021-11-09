@@ -11,6 +11,7 @@ var z_as_relative: bool = false
 var wrap_around: bool = false
 var material: Material = null
 
+
 static func different_render(q1: SS2D_Quad, q2: SS2D_Quad) -> bool:
 	"""
 	Will return true if the 2 quads must be drawn in two calls
@@ -18,6 +19,7 @@ static func different_render(q1: SS2D_Quad, q2: SS2D_Quad) -> bool:
 	if q1.matches_quad(q2):
 		return false
 	return true
+
 
 static func get_consecutive_quads_for_mesh(_quads: Array) -> Array:
 	if _quads.empty():
@@ -37,6 +39,7 @@ static func get_consecutive_quads_for_mesh(_quads: Array) -> Array:
 
 	quad_ranges.push_back(quad_range)
 	return quad_ranges
+
 
 static func generate_array_mesh_from_quad_sequence(_quads: Array, wrap_around: bool) -> ArrayMesh:
 	"""

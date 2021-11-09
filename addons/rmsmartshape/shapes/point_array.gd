@@ -394,8 +394,10 @@ func __new():
 # TUPLE #
 #########
 
+
 static func create_tuple(a: int, b: int) -> Array:
 	return [a, b]
+
 
 static func get_other_value_from_tuple(t: Array, value: int) -> int:
 	if t[0] == value:
@@ -404,8 +406,10 @@ static func get_other_value_from_tuple(t: Array, value: int) -> int:
 		return t[0]
 	return -1
 
+
 static func tuples_are_equal(t1: Array, t2: Array) -> bool:
 	return (t1[0] == t2[0] and t1[1] == t2[1]) or (t1[0] == t2[1] and t1[1] == t2[0])
+
 
 static func find_tuple_in_array_of_tuples(tuple_array: Array, t: Array) -> int:
 	for i in range(tuple_array.size()):

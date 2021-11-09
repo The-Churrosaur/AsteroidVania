@@ -9,6 +9,7 @@ Common Abbreviations
 et = editor transform (viewport's canvas transform)
 """
 
+
 #########
 # VERTS #
 #########
@@ -17,10 +18,12 @@ static func get_intersecting_control_point_in(
 ) -> Array:
 	return _get_intersecting_control_point(s, et, mouse_pos, grab_threshold, true)
 
+
 static func get_intersecting_control_point_out(
 	s: SS2D_Shape_Base, et: Transform2D, mouse_pos: Vector2, grab_threshold: float
 ) -> Array:
 	return _get_intersecting_control_point(s, et, mouse_pos, grab_threshold, false)
+
 
 static func _get_intersecting_control_point(
 	s: SS2D_Shape_Base, et: Transform2D, mouse_pos: Vector2, grab_threshold: float, _in: bool
@@ -44,6 +47,7 @@ static func _get_intersecting_control_point(
 
 	return points
 
+
 ###########
 # ACTIONS #
 ###########
@@ -63,6 +67,7 @@ static func action_set_pivot(
 
 	undo.commit_action()
 
+
 static func action_move_verticies(
 	update_node: Node, update_method: String, undo: UndoRedo, s: SS2D_Shape_Base, action
 ):
@@ -79,6 +84,7 @@ static func action_move_verticies(
 	undo.add_undo_method(update_node, update_method)
 
 	undo.commit_action()
+
 
 static func action_move_control_points(
 	update_node: Node,
@@ -110,6 +116,7 @@ static func action_move_control_points(
 	undo.add_undo_method(update_node, update_method)
 	undo.commit_action()
 
+
 static func action_delete_point_in(
 	update_node: Node, update_method: String, undo: UndoRedo, s: SS2D_Shape_Base, key: int
 ):
@@ -124,6 +131,7 @@ static func action_delete_point_in(
 
 	undo.commit_action()
 	action_invert_orientation(update_node, update_method, undo, s)
+
 
 static func action_delete_point_out(
 	update_node: Node, update_method: String, undo: UndoRedo, s: SS2D_Shape_Base, key: int
@@ -140,6 +148,7 @@ static func action_delete_point_out(
 	undo.commit_action()
 	action_invert_orientation(update_node, update_method, undo, s)
 
+
 static func get_constrained_points_to_delete(s: SS2D_Shape_Base, k: int, keys = []):
 	keys.push_back(k)
 	var constraints = s.get_point_constraints(k)
@@ -152,6 +161,7 @@ static func get_constrained_points_to_delete(s: SS2D_Shape_Base, k: int, keys = 
 			if not keys.has(k2):
 				get_constrained_points_to_delete(s, k2, keys)
 	return keys
+
 
 static func action_delete_point(
 	update_node: Node, update_method: String, undo: UndoRedo, s: SS2D_Shape_Base, first_key: int
@@ -168,6 +178,7 @@ static func action_delete_point(
 
 	undo.commit_action()
 	action_invert_orientation(update_node, update_method, undo, s)
+
 
 static func action_add_point(
 	update_node: Node,
@@ -192,6 +203,7 @@ static func action_add_point(
 	undo.commit_action()
 	action_invert_orientation(update_node, update_method, undo, s)
 	return new_key
+
 
 static func action_split_curve(
 	update_node: Node,
@@ -221,12 +233,14 @@ static func action_split_curve(
 	action_invert_orientation(update_node, update_method, undo, s)
 	return key
 
+
 static func should_invert_orientation(s: SS2D_Shape_Base) -> bool:
 	if s == null:
 		return false
 	if s is SS2D_Shape_Open:
 		return false
 	return not s.are_points_clockwise() and s.get_point_count() >= 3
+
 
 static func action_invert_orientation(
 	update_node: Node, update_method: String, undo: UndoRedo, s: SS2D_Shape_Base

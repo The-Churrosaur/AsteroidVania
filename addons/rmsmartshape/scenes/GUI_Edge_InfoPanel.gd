@@ -1,15 +1,15 @@
 tool
 extends PanelContainer
 
-export (NodePath) var p_lbl_idx
-export (NodePath) var p_btn_material_override
-export (NodePath) var p_ctr_override
-export (NodePath) var p_chk_render
-export (NodePath) var p_chk_weld
-export (NodePath) var p_int_index
-export (NodePath) var p_btn_edge_material
-export (NodePath) var p_btn_clear_edge_material
-export (NodePath) var p_lbl_edge_material
+export(NodePath) var p_lbl_idx
+export(NodePath) var p_btn_material_override
+export(NodePath) var p_ctr_override
+export(NodePath) var p_chk_render
+export(NodePath) var p_chk_weld
+export(NodePath) var p_int_index
+export(NodePath) var p_btn_edge_material
+export(NodePath) var p_btn_clear_edge_material
+export(NodePath) var p_lbl_edge_material
 
 var indicies = [-1, -1] setget set_indicies
 var edge_material = null

@@ -2,9 +2,9 @@ tool
 extends Resource
 class_name SS2D_VertexProperties
 
-export (int) var texture_idx: int # setget set_texture_idx
-export (bool) var flip: bool #setget set_flip
-export (float) var width: float #setget set_width
+export(int) var texture_idx: int  # setget set_texture_idx
+export(bool) var flip: bool  #setget set_flip
+export(float) var width: float  #setget set_width
 
 
 func set_texture_idx(i: int):

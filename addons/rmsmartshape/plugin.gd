@@ -311,20 +311,21 @@ func _enter_tree():
 	plugin = preload("res://addons/rmsmartshape/inpsector_plugin.gd").new()
 	if plugin != null:
 		add_inspector_plugin(plugin)
-		
+
 	pass
 
 
 func _exit_tree():
-	if (plugin != null):
+	if plugin != null:
 		remove_inspector_plugin(plugin)
-		
+
 	gui_point_info_panel.visible = false
 	gui_edge_info_panel.visible = false
 	remove_control_from_container(EditorPlugin.CONTAINER_CANVAS_EDITOR_MENU, tb_hb)
 	remove_control_from_container(EditorPlugin.CONTAINER_CANVAS_EDITOR_MENU, tb_hb_legacy_import)
 	tb_hb.queue_free()
 	tb_hb_legacy_import.queue_free()
+
 
 func forward_canvas_gui_input(event):
 	if not is_shape_valid(shape):
@@ -418,7 +419,7 @@ func make_visible(visible):
 # SNAPPING #
 ############
 func use_global_snap() -> bool:
-	return ! tb_snap_popup.is_item_checked(1)
+	return !tb_snap_popup.is_item_checked(1)
 
 
 func use_snap() -> bool:
@@ -882,7 +883,7 @@ func draw_new_point_close_preview(overlay: Control):
 	var mouse = overlay.get_local_mouse_position()
 	var a = t.xform(shape.get_point_position(closest_edge_keys[0]))
 	var b = t.xform(shape.get_point_position(closest_edge_keys[1]))
-#	var a = 
+#	var a =
 #	var b = t.xform()
 	overlay.draw_line(mouse, b, color, width, true)
 	overlay.draw_line(mouse, a, color, width, true)

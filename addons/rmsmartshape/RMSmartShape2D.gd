@@ -108,19 +108,19 @@ class QuadInfo:
 		return false
 
 
-export (bool) var editor_debug = false setget _set_editor_debug
-export (Curve2D) var curve: Curve2D = null setget _set_curve
-export (bool) var closed_shape = false setget _set_close_shape
-export (bool) var auto_update_collider = false setget _set_auto_update_collider
-export (int, 1, 8) var tessellation_stages = 5 setget _set_tessellation_stages
-export (int, 1, 8) var tessellation_tolerence = 4 setget _set_tolerence
-export (bool) var use_global_space = false setget _set_use_global_space
-export (NodePath) var collision_polygon_node
-export (int, 1, 512) var collision_bake_interval = 20
-export (bool) var draw_edges: bool = false setget _set_has_edge
-export (bool) var flip_edges: bool = false setget _set_flip_edge
+export(bool) var editor_debug = false setget _set_editor_debug
+export(Curve2D) var curve: Curve2D = null setget _set_curve
+export(bool) var closed_shape = false setget _set_close_shape
+export(bool) var auto_update_collider = false setget _set_auto_update_collider
+export(int, 1, 8) var tessellation_stages = 5 setget _set_tessellation_stages
+export(int, 1, 8) var tessellation_tolerence = 4 setget _set_tolerence
+export(bool) var use_global_space = false setget _set_use_global_space
+export(NodePath) var collision_polygon_node
+export(int, 1, 512) var collision_bake_interval = 20
+export(bool) var draw_edges: bool = false setget _set_has_edge
+export(bool) var flip_edges: bool = false setget _set_flip_edge
 
-export (Resource) var shape_material = RMS2D_Material.new() setget _set_material
+export(Resource) var shape_material = RMS2D_Material.new() setget _set_material
 
 # This will set true if it is time to rebake mesh, should prevent unnecessary
 # mesh creation unless a change to a property deems it necessary
@@ -147,10 +147,12 @@ signal on_closed_change
 func _init():
 	pass
 
+
 func _has_minimum_point_count() -> bool:
 	if closed_shape:
 		return get_point_count() >= 3
 	return get_point_count() >= 2
+
 
 func _ready():
 	if curve == null:
@@ -592,6 +594,7 @@ func _weld_quads(quads: Array, custom_scale: float = 1.0):
 				previous_quad.pt_d = this_quad.pt_d
 				previous_quad.pt_c = this_quad.pt_c
 
+
 func _is_cardinal_direction(d: int) -> bool:
 	"""
 	Takes a values from the DIRECTION enum
@@ -664,7 +667,7 @@ func _get_direction_three_points(
 	var ab = point - point_prev
 	var bc = point_next - point
 	var dot_prod = ab.dot(bc)
-	var determinant = (ab.x*bc.y) - (ab.y*bc.x)
+	var determinant = (ab.x * bc.y) - (ab.y * bc.x)
 	var angle = atan2(determinant, dot_prod)
 	# This angle has a range of 360 degrees
 	# Is between 180 and - 180
@@ -720,11 +723,11 @@ func _vector_to_corner_dir(vec: Vector2, inner: bool) -> int:
 	if _in_range(deg, 90.0, 180.0):
 		if inner:
 			return DIRECTION.TOP_LEFT_INNER
-		return DIRECTION.BOTTOM_RIGHT_OUTER # Correct
+		return DIRECTION.BOTTOM_RIGHT_OUTER  # Correct
 	if _in_range(deg, 180.0, 270.0):
 		if inner:
 			return DIRECTION.TOP_RIGHT_INNER
-		return DIRECTION.BOTTOM_LEFT_OUTER # Correct
+		return DIRECTION.BOTTOM_LEFT_OUTER  # Correct
 	if _in_range(deg, 270.0, 360.0):
 		if inner:
 			return DIRECTION.BOTTOM_RIGHT_INNER
@@ -1107,40 +1110,19 @@ func _build_corner_quad(
 	var width = (pt_prev_width + pt_width) / 2.0
 	var center = pt + (delta_12.normalized() * extents)
 
-	var offset_12 = (normal_12 * custom_scale * pt_width * extents)
-	var offset_23 = (normal_23 * custom_scale * pt_prev_width * extents)
-	var custom_offset_13 = ((normal_12 + normal_23) * custom_offset * extents)
+	var offset_12 = normal_12 * custom_scale * pt_width * extents
+	var offset_23 = normal_23 * custom_scale * pt_prev_width * extents
+	var custom_offset_13 = (normal_12 + normal_23) * custom_offset * extents
 	if flip_edges:
 		offset_12 *= -1
 		offset_23 *= -1
 		custom_offset_13 *= -1
 
-	var pt_d = (
-		pt
-		+ (offset_23)
-		+ (offset_12)
-		+ custom_offset_13
-	)
-	var pt_a = (
-		pt
-		- (offset_23)
-		+ (offset_12)
-		+ custom_offset_13
-		#+ offset_12
-	)
+	var pt_d = pt + (offset_23) + (offset_12) + custom_offset_13
+	var pt_a = pt - (offset_23) + (offset_12) + custom_offset_13  #+ offset_12
 	#var pt_c = pt + (center + offset_23) - (center + offset_12) + custom_offset_13
-	var pt_c = (
-		pt
-		+ (offset_23)
-		- (offset_12)
-		+ custom_offset_13
-	)
-	var pt_b = (
-		pt
-		- (offset_23)
-		- (offset_12)
-		+ custom_offset_13
-	)
+	var pt_c = pt + (offset_23) - (offset_12) + custom_offset_13
+	var pt_b = pt - (offset_23) - (offset_12) + custom_offset_13
 
 	#if custom_offset != 1.0 and custom_offset != 0.0:
 	#print(("n1:%s  |  n2:%s  | d1:%s  | d2:%s  |  o1:%s  |  o2:%s"% [normal_12, normal_23, delta_12, delta_23, offset_12, offset_23]))
@@ -1246,7 +1228,7 @@ func _build_quads(custom_scale: float = 1.0, custom_offset: float = 0, custom_ex
 		# This causes weird rendering if the texture isn't a square
 		# IE, if taller than wide, left/right edges look skinny, whereas top/bottom looks normal
 		# if wider than tall, top/bottom edges look skinny, whereas left/right looks normal
-		var vtx:Vector2 = vtx_normal * (tex_size * 0.5)
+		var vtx: Vector2 = vtx_normal * (tex_size * 0.5)
 
 		var scale_in: float = 1
 		var scale_out: float = 1
@@ -1481,7 +1463,7 @@ func bake_mesh(force: bool = false):
 	_quads = Array()
 
 	# Produce Fill Mesh
-	var fill_points:PoolVector2Array = PoolVector2Array()
+	var fill_points: PoolVector2Array = PoolVector2Array()
 	fill_points.resize(point_count)
 	for i in point_count:
 		fill_points[i] = points[i]
@@ -1553,13 +1535,15 @@ func invert_point_order():
 	if Engine.editor_hint:
 		property_list_changed_notify()
 
+
 func clear_points():
 	curve.clear_points()
 	vertex_properties = RMS2D_VertexPropertiesArray.new(0)
 	_quads = []
 	meshes = []
 
-func add_points_to_curve(verts:Array, starting_index: int = -1, update:bool = true):
+
+func add_points_to_curve(verts: Array, starting_index: int = -1, update: bool = true):
 	for i in range(0, verts.size(), 1):
 		var v = verts[i]
 		if starting_index != -1:
@@ -1572,12 +1556,14 @@ func add_points_to_curve(verts:Array, starting_index: int = -1, update:bool = tr
 	if update:
 		_add_point_update()
 
-func add_point_to_curve(position:Vector2, index:int = -1, update:bool = true):
+
+func add_point_to_curve(position: Vector2, index: int = -1, update: bool = true):
 	curve.add_point(position, Vector2.ZERO, Vector2.ZERO, index)
 	vertex_properties.add_point(index)
 
 	if update:
 		_add_point_update()
+
 
 func _add_point_update():
 	set_as_dirty()
@@ -1585,6 +1571,7 @@ func _add_point_update():
 
 	if Engine.editor_hint:
 		property_list_changed_notify()
+
 
 func _is_curve_index_in_range(i: int) -> bool:
 	if curve.get_point_count() > i and i >= 0:

@@ -11,7 +11,6 @@ func _init():
 	_is_instantiable = true
 
 
-
 ############
 # OVERRIDE #
 ############
@@ -28,7 +27,8 @@ func __new():
 func should_flip_edges() -> bool:
 	return flip_edges
 
-func import_from_legacy(legacy:RMSmartShape2D):
+
+func import_from_legacy(legacy: RMSmartShape2D):
 	# Sanity Check
 	if legacy == null:
 		push_error("LEGACY SHAPE IS NULL; ABORTING;")
@@ -56,5 +56,3 @@ func import_from_legacy(legacy:RMSmartShape2D):
 		set_point_texture_index(key, legacy.get_point_texture_index(i))
 		set_point_texture_flip(key, legacy.get_point_texture_flip(i))
 		set_point_width(key, legacy.get_point_width(i))
-
-

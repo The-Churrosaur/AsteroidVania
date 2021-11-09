@@ -7,14 +7,14 @@ This class will determine if the normal of a vector falls within the specifed an
 - 360.0 and 0.0 degrees are considered equivilent
 """
 
-export (int, 0, 360, 0) var begin = 0.0 setget set_begin
-export (int, 0, 360, 0) var distance = 0.0 setget set_distance
+export(int, 0, 360, 0) var begin = 0.0 setget set_begin
+export(int, 0, 360, 0) var distance = 0.0 setget set_distance
 var end = 0.0 setget set_end
 
 # This is a hack to support the custom editor, needed a property
 # to exist to lock the TextureProgress to.  Makes it flow better
 # in the Inspector.
-export (Vector2) var edgeRendering
+export(Vector2) var edgeRendering
 
 
 func set_distance(f: float):
@@ -64,6 +64,7 @@ static func get_angle_from_vector(vec: Vector2) -> float:
 		deg = 360.0 + deg
 	return deg
 
+
 static func _get_positive_angle_deg(degrees: float) -> float:
 	"""
 	Get in range between 0.0 and 360.0
@@ -75,7 +76,7 @@ static func _get_positive_angle_deg(degrees: float) -> float:
 
 # Saving a scene with this resource requires a parameter-less init method
 func _init(_begin: float = 0.0, _end: float = 0.0):
-	# Distance has been added, which should allow us 
+	# Distance has been added, which should allow us
 	# to fixup some of the other numbers now.
 	if distance == 0:
 		if end < begin:

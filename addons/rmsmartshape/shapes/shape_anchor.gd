@@ -5,15 +5,15 @@ const DEBUG_DRAW_LINE_LENGTH = 128.0
 
 class_name SS2D_Shape_Anchor, "../assets/Anchor.svg"
 
-export (NodePath) var shape_path: NodePath setget set_shape_path
-export (int) var shape_point_index: int = 0 setget set_shape_point_index
-export (float, 0.0, 1.0) var shape_point_offset: float = 0.0 setget set_shape_point_offset
-export (float, 0, 3.14) var child_rotation: float = 3.14 setget set_child_rotation
-export (bool) var use_shape_scale: bool = false setget set_use_shape_scale
+export(NodePath) var shape_path: NodePath setget set_shape_path
+export(int) var shape_point_index: int = 0 setget set_shape_point_index
+export(float, 0.0, 1.0) var shape_point_offset: float = 0.0 setget set_shape_point_offset
+export(float, 0, 3.14) var child_rotation: float = 3.14 setget set_child_rotation
+export(bool) var use_shape_scale: bool = false setget set_use_shape_scale
 
-export (bool) var debug_draw: bool = false setget set_debug_draw
+export(bool) var debug_draw: bool = false setget set_debug_draw
 
-var cached_shape_transform:Transform2D = Transform2D.IDENTITY
+var cached_shape_transform: Transform2D = Transform2D.IDENTITY
 var shape = null
 
 
@@ -27,6 +27,7 @@ func set_shape_path(value: NodePath):
 
 	property_list_changed_notify()
 	refresh()
+
 
 func set_shape():
 	# Disconnect old shape
@@ -45,8 +46,7 @@ func set_shape():
 		shape_point_index = get_shape_index_range(shape, shape_point_index)
 
 
-
-func get_shape_index_range(s:SS2D_Shape_Base, idx:int)->int:
+func get_shape_index_range(s: SS2D_Shape_Base, idx: int) -> int:
 	var point_count = s.get_point_count()
 	# Subtract 2;
 	#   'point_count' is out of bounds; subtract 1
@@ -56,6 +56,7 @@ func get_shape_index_range(s:SS2D_Shape_Base, idx:int)->int:
 		idx = final_idx
 	idx = idx % (final_idx + 1)
 	return idx
+
 
 func set_shape_point_index(value: int):
 	if value == shape_point_index:

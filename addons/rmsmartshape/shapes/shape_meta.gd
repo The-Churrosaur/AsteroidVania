@@ -6,7 +6,7 @@ class_name SS2D_Shape_Meta, "../assets/meta_shape.png"
 This shape will set the point_array data of all children shapes
 """
 
-export (bool) var press_to_update_cached_children = false setget _on_update_children
+export(bool) var press_to_update_cached_children = false setget _on_update_children
 var _cached_shape_children: Array = []
 
 
@@ -54,6 +54,7 @@ func _on_dirty_update():
 func set_as_dirty():
 	_update_shapes()
 
+
 ########
 # META #
 ########
@@ -69,11 +70,13 @@ func _update_cached_children():
 	if treat_as_closed():
 		can_edit = false
 		if editor_debug:
-			print ("META Shape contains Closed shapes, edit the meta shape using the child closed shape; DO NOT EDIT META DIRECTLY")
+			print(
+				"META Shape contains Closed shapes, edit the meta shape using the child closed shape; DO NOT EDIT META DIRECTLY"
+			)
 	else:
 		can_edit = true
 		if editor_debug:
-			print ("META Shape contains no Closed shapes, can edit META shape directly")
+			print("META Shape contains no Closed shapes, can edit META shape directly")
 
 
 func _get_shapes(n: Node, a: Array = []) -> Array:
@@ -107,7 +110,8 @@ func _remove_from_meta(n: Node):
 	n.set_point_array(n.get_point_array(), true)
 	n.disconnect("points_modified", self, "_update_shapes")
 
-func treat_as_closed()->bool:
+
+func treat_as_closed() -> bool:
 	var has_closed = false
 	for c in _cached_shape_children:
 		if c is SS2D_Shape_Closed:

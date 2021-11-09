@@ -36,17 +36,17 @@ enum ORIENTATION { COLINEAR, CLOCKWISE, C_CLOCKWISE }
 ###########
 # EXPORTS #
 ###########
-export (bool) var editor_debug: bool = false setget _set_editor_debug
-export (float, 1, 512) var curve_bake_interval: float = 20.0 setget set_curve_bake_interval
+export(bool) var editor_debug: bool = false setget _set_editor_debug
+export(float, 1, 512) var curve_bake_interval: float = 20.0 setget set_curve_bake_interval
 
-export (Resource) var _points = SS2D_Point_Array.new() setget set_point_array, get_point_array
+export(Resource) var _points = SS2D_Point_Array.new() setget set_point_array, get_point_array
 # Dictionary of (Array of 2 points) to (SS2D_Material_Edge_Metadata)
-export (Dictionary) var material_overrides = null setget set_material_overrides
+export(Dictionary) var material_overrides = null setget set_material_overrides
 
 ####################
 # DETAILED EXPORTS #
 ####################
-export (Resource) var shape_material = SS2D_Material_Shape.new() setget _set_material
+export(Resource) var shape_material = SS2D_Material_Shape.new() setget _set_material
 """
 		{
 			"name": "shape_material",
@@ -874,6 +874,7 @@ static func on_segment(p: Vector2, q: Vector2, r: Vector2) -> bool:
 	):
 		return true
 	return false
+
 
 static func get_points_orientation(points: Array) -> int:
 	var point_count = points.size()
