@@ -18,13 +18,15 @@ export var flip_solution = true
 onready var shoulder: Node2D = get_node(shoulder_path)
 onready var elbow: Node2D = get_node(elbow_path)
 onready var hand: Node2D = get_node(hand_path)
-onready var target: Node2D = get_node(target_path)
+onready var target: Node2D = get_node_or_null(target_path)
 
 var length_a: float  # shoulder to elbow
 var length_b: float  # elbow to hand
 
 var shoulder_offset_angle: float  # difference of arm angle from zero
 var elbow_offset_angle: float
+
+var has_set_lengths = false
 
 
 func _ready():
@@ -65,10 +67,12 @@ func set_lengths():
 	elbow_offset_angle -= (elbow.rotation + shoulder_offset_angle)
 	print("elbow offset: ", elbow_offset_angle)
 
+	has_set_lengths = true
+
 
 # calculate rotations
 func calculate():
-	if target == null:
+	if target == null or not has_set_lengths:
 		return
 #	print("calculating ik")
 

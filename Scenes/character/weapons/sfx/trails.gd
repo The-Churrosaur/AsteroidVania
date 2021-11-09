@@ -20,13 +20,13 @@ func _process(delta):
 		line.set_point_position(0, line.to_local(bullet.global_position))
 
 
-func setup(bullet):
+func setup(new_bullet):
 	print("setting up trail")
-	self.bullet = bullet
+	bullet = new_bullet
 	bullet.connect("bullet_removed", self, "on_bullet_destroyed")
 
 
-func on_bullet_destroyed(bullet, bullet_name):
+func on_bullet_destroyed(_bullet, _bullet_name):
 	self.bullet = null
 
 

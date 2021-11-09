@@ -12,7 +12,6 @@ signal bullet_removed(bullet, id)
 signal bullet_impacted(bullet, body)
 
 onready var life_timer = $LifeTimer
-onready var activation_timer = $ActivationTimer
 onready var line = $Line2D
 
 var temp_collision_layer = collision_layer

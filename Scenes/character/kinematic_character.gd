@@ -20,9 +20,8 @@ export var maneuver_enabled = true  # move around with WASD
 
 export var hit_area_path: NodePath
 export var animator_path: NodePath = "Rig/AnimationTree"
-export var normal_detector_path: NodePath = "NormalDetector"
 
-onready var normal_detector = get_node(normal_detector_path)
+onready var normal_detector = $NormalDetector
 
 # control flags - write from player/ai controller
 
@@ -48,7 +47,6 @@ var just_landed = false  # auto resets
 
 onready var physics_dummy_preload = preload("res://Scenes/character/CharacterPhysicsDummy.tscn")
 var physics_dummy_instance: RigidBody2D = null
-var physics_dummy_spawned = false
 
 # physics dummy gravity
 
@@ -84,7 +82,6 @@ signal player_hit(body)
 signal entered_platform(platform, normal)
 signal left_platform
 signal jumping
-signal magwalking(direction)
 
 
 func _ready():
@@ -387,7 +384,6 @@ func spawn_physics_dummy(init_velocity = velocity):
 	# TODO get level root from global manager
 	get_tree().root.add_child(physics_dummy_instance)
 	physics_dummy_instance.global_position = global_position
-	physics_dummy_spawned = true
 
 	physics_dummy_instance.connect("gravity_area_entered", self, "on_dummy_enter_grav")
 	physics_dummy_instance.connect("gravity_area_left", self, "on_dummy_leave_grav")
@@ -399,7 +395,6 @@ func despawn_physics_dummy():
 		physics_dummy_instance.get_parent().remove_child(physics_dummy_instance)
 		physics_dummy_instance.queue_free()
 		physics_dummy_instance = null
-		physics_dummy_spawned = false
 	else:
 		print("physics dummy already null")
 
