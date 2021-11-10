@@ -47,6 +47,7 @@ var just_landed = false  # auto resets
 
 onready var physics_dummy_preload = preload("res://Scenes/character/CharacterPhysicsDummy.tscn")
 var physics_dummy_instance: RigidBody2D = null
+var physics_dummy_is_ready = false
 
 # physics dummy gravity
 
@@ -90,7 +91,7 @@ func _ready():
 	platform_normal = Vector2(0, -1)
 
 	# initial spawn dummy in case floating
-	spawn_physics_dummy()
+	call_deferred("spawn_physics_dummy")
 
 	# register hitbox impacts
 	assert(hit_area != null)
@@ -98,6 +99,9 @@ func _ready():
 
 
 func _physics_process(delta):
+	if not physics_dummy_is_ready:
+		return
+
 	# update last position, velocity
 	velocity = (position - last_position) / delta
 	last_position = position
@@ -376,6 +380,8 @@ func leave_platform(microyeet = 0):
 
 
 func spawn_physics_dummy(init_velocity = velocity):
+	physics_dummy_is_ready = true
+
 	if physics_dummy_instance != null:
 		print("physics dummy already exists")
 		return
