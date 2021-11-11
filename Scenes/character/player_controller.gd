@@ -14,6 +14,7 @@ export var health_path: NodePath = "../CharacterHealth"
 
 export var relative_directional_magwalk = false
 export var mouse_camera_rotation = false
+export var debug_draw_8_dir = false
 
 export var invul_time = 0.7
 
@@ -100,9 +101,9 @@ func _input(event):
 	# jump
 
 	if event.is_action_pressed("ui_accept"):
-		pass
-	if event.is_action_released("ui_accept"):
 		jump()
+	if event.is_action_released("ui_accept"):
+		pass
 
 	# shoot
 
@@ -130,7 +131,9 @@ func _input(event):
 
 # input handler helpers
 func jump():
-	character.jump_towards = get_global_mouse_position()
+	var movement = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+
+	character.jump_towards = character.to_global(movement)
 	character.should_jump = true
 
 	invul(invul_time)
@@ -176,6 +179,8 @@ func _process(delta):
 	if !character.on_platform && mouse_camera_rotation:
 		var view = hud.get_viewport()
 		character.rotation = (view.get_mouse_position() - view.size / 2).angle()
+
+	update()
 
 
 func camera_relative_vector(vector: Vector2, player_rot) -> Vector2:
@@ -267,3 +272,32 @@ func de_equip_weapon():
 	weapon.release_trigger()  # just in case
 	weapon.visible = false  # 'sheathing' for now
 	weapon = null
+
+
+func _draw():
+	if not debug_draw_8_dir:
+		return
+
+	draw_circle(character.get_global_position(), 5, Color.white)
+
+	var dist = 100
+	var diagonal_dist = dist / 2
+
+	var LEFT = dist * Vector2.LEFT
+	var RIGHT = dist * Vector2.RIGHT
+	var UP = dist * Vector2.UP
+	var DOWN = dist * Vector2.DOWN
+
+	var TL = diagonal_dist * (Vector2.UP + Vector2.LEFT)
+	var TR = diagonal_dist * (Vector2.UP + Vector2.RIGHT)
+	var BL = diagonal_dist * (Vector2.DOWN + Vector2.LEFT)
+	var BR = diagonal_dist * (Vector2.DOWN + Vector2.RIGHT)
+
+	draw_circle(character.to_global(LEFT), 5, Color.orange)
+	draw_circle(character.to_global(RIGHT), 5, Color.orangered)
+	draw_circle(character.to_global(UP), 5, Color.magenta)
+	draw_circle(character.to_global(DOWN), 5, Color.purple)
+	draw_circle(character.to_global(TL), 5, Color.blue)
+	draw_circle(character.to_global(TR), 5, Color.aqua)
+	draw_circle(character.to_global(BL), 5, Color.green)
+	draw_circle(character.to_global(BR), 5, Color.yellow)
