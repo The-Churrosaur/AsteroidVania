@@ -26,7 +26,7 @@ func on_bullet_spawned(weapon, bullet, id):
 	#print("handler: bullet spawned: ", bullet)
 	bullets[id] = bullet
 	bullet.connect("bullet_removed", self, "on_bullet_removed")
-	level.add_child(bullet)
+	get_tree().current_scene.add_child(bullet)
 
 
 func on_bullet_removed(bullet, id):

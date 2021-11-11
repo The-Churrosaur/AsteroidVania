@@ -6,7 +6,7 @@ extends KinematicBody2D
 export var rotational_velocity = 0
 export var rotational_speed = PI / 64
 export var magwalk_velocity = 100  # pixels/tick
-export var magwalk_gravity = 10  # velocity towards surface
+export var magwalk_gravity = 20  # velocity towards surface
 export var magwalk_ang_lerp = 0.2
 export var jump_impulse = 300
 export var gravity_ang_lerp = 0.05
@@ -20,6 +20,8 @@ export var maneuver_enabled = true  # move around with WASD
 
 export var hit_area_path: NodePath
 export var animator_path: NodePath = "Rig/AnimationTree"
+
+onready var normal_detector = $NormalDetector
 
 # control flags - write from player/ai controller
 
@@ -45,7 +47,7 @@ var just_landed = false  # auto resets
 
 onready var physics_dummy_preload = preload("res://Scenes/character/CharacterPhysicsDummy.tscn")
 var physics_dummy_instance: RigidBody2D = null
-var physics_dummy_spawned = false
+var physics_dummy_is_ready = false
 
 # physics dummy gravity
 
@@ -81,7 +83,6 @@ signal player_hit(body)
 signal entered_platform(platform, normal)
 signal left_platform
 signal jumping
-signal magwalking(direction)
 
 
 func _ready():
@@ -90,7 +91,7 @@ func _ready():
 	platform_normal = Vector2(0, -1)
 
 	# initial spawn dummy in case floating
-	spawn_physics_dummy()
+	call_deferred("spawn_physics_dummy")
 
 	# register hitbox impacts
 	assert(hit_area != null)
@@ -98,6 +99,9 @@ func _ready():
 
 
 func _physics_process(delta):
+	if not physics_dummy_is_ready:
+		return
+
 	# update last position, velocity
 	velocity = (position - last_position) / delta
 	last_position = position
@@ -125,10 +129,6 @@ func _physics_process(delta):
 		# move
 		var collision = move_and_collide(displacement * delta, false)
 #		var collision = move_and_collide(Vector2(5,0), false)
-		if get_parent().is_in_group("PlayerBase"):
-#			print("dummy pos: ", physics_dummy_instance.global_position)
-			print("displacement: ", displacement * delta)
-
 		# update rotation from input (?)
 		rotation += rotational_velocity
 
@@ -145,10 +145,25 @@ func _physics_process(delta):
 	# handle snapping, magbooting, jumping
 	else:
 		# rotate to platform
+#		print(platform_normal)
 		rotation = lerp_angle(rotation, platform_normal.angle() + PI / 2, magwalk_ang_lerp)
 
+		# check collisions with current platform
+		var collisions = update_collisions(platform)
+
+		# fall off or hit new platform
+		if collisions.empty():
+			leave_platform()
+			return
+
+		var line = $Line2D
+		line.clear_points()
+		for i in collisions:
+			line.add_point(to_local(i))
+
 		# update normal --
-		update_normal()
+		platform_normal = update_normal(collisions[collisions.size() - 1])
+#		print(platform_normal)
 
 		# update snap vector
 		var snap_vector = update_snap(snap_vector_length)
@@ -158,6 +173,7 @@ func _physics_process(delta):
 
 		# push towards platform
 		displacement += -platform_normal * magwalk_gravity
+#		print(displacement)
 
 		# add displacement from magwalking
 		displacement += platform_normal.tangent() * magwalk_velocity * -magwalk_dir.x
@@ -169,9 +185,7 @@ func _physics_process(delta):
 #		$Sprite.global_position = global_position + displacement
 
 		# do the move
-		move_and_slide_with_snap(
-			displacement, snap_vector, platform_normal, false, 4, 4 * PI, false
-		)
+		move_and_slide_with_snap(displacement, snap_vector, platform_normal, false, 4, PI, false)
 
 	# jump - leaves platform and punts the dummy
 	# todo boost limiting on playercontroller/logic node
@@ -238,28 +252,38 @@ func match_surface_velocity() -> bool:
 	return true
 
 
-func update_normal():
-#	# if just landed, use normal from previous loop collision
-#	if just_landed:
-#		print("just landed")
-#		just_landed = false
-#	# else check moveandslide
-#	else:
-#		platform_normal = get_floor_normal()
-#		# if broke away from platform last tick
+func update_collisions(target) -> Array:
+	var this_shape = normal_detector.shape_owner_get_shape(0, 0)
+	var this_matrix = normal_detector.shape_owner_get_owner(0).global_transform
 
-	# raycast to center of platform, get impact normal
-	normal_raycast.cast_to = normal_raycast.to_local(platform.global_position)
-	platform_normal = normal_raycast.get_collision_normal()
+	var collisions = []
+
+	var other_matrix = target.shape_owner_get_owner(0).global_transform
+
+	for i in get_shape_owners().size():
+		for j in target.shape_owner_get_shape_count(i):
+			var other_shape = target.shape_owner_get_shape(i, j)
+#			collisions.append_array(this_shape.collide_with_motion_and_get_contacts(this_matrix, displacement, other_shape, other_matrix, Vector2.ZERO))
+			collisions.append_array(
+				this_shape.collide_and_get_contacts(this_matrix, other_shape, other_matrix)
+			)
+#			print("owners and shapes: ", i, j)
+
+#	var velocity = -platform_normal
+
+#	print("collisions: ", collisions)
+
+	return collisions
 
 
-#	$Sprite.global_position = normal_raycast.get_collision_point() + platform_normal
+func update_normal(collision) -> Vector2:  # global
+	normal_raycast.cast_to = normal_raycast.to_local(collision)
+#	print(normal_raycast.get_collision_normal())
+	return normal_raycast.get_collision_normal()
 
 
 func update_snap(length) -> Vector2:
-	# currently uses direction to center of platform
-	# may be an issue for complex shaped platforms
-	var snap = (platform.global_position - global_position).normalized() * length
+	var snap = platform_normal * length * -1
 #	$Sprite.global_position = global_position + snap
 	return snap
 
@@ -356,6 +380,8 @@ func leave_platform(microyeet = 0):
 
 
 func spawn_physics_dummy(init_velocity = velocity):
+	physics_dummy_is_ready = true
+
 	if physics_dummy_instance != null:
 		print("physics dummy already exists")
 		return
@@ -364,7 +390,6 @@ func spawn_physics_dummy(init_velocity = velocity):
 	# TODO get level root from global manager
 	get_tree().root.add_child(physics_dummy_instance)
 	physics_dummy_instance.global_position = global_position
-	physics_dummy_spawned = true
 
 	physics_dummy_instance.connect("gravity_area_entered", self, "on_dummy_enter_grav")
 	physics_dummy_instance.connect("gravity_area_left", self, "on_dummy_leave_grav")
@@ -376,7 +401,6 @@ func despawn_physics_dummy():
 		physics_dummy_instance.get_parent().remove_child(physics_dummy_instance)
 		physics_dummy_instance.queue_free()
 		physics_dummy_instance = null
-		physics_dummy_spawned = false
 	else:
 		print("physics dummy already null")
 

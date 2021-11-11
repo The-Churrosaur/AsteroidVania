@@ -138,8 +138,8 @@ func jump():
 
 	invul(invul_time)
 
-	camera.shaker.shake_rot(0.02, 0.15, 0.3)
-	camera.shaker.shake_pos(20, 0.15, 0.3)
+#	camera.shaker.shake_rot(0.02, 0.15, 0.3)
+	camera.shaker.shake_pos(30, 0.1, 0.3)
 
 	character.get_node("JetLight").enabled = true
 	print("jetflash")
@@ -211,8 +211,8 @@ func on_player_enter_platform(platform, normal: Vector2):
 	# handle screenshake effect - todo make consts
 	var player_vel_squared = character.velocity.length_squared()
 	if player_vel_squared > 30 * 30:
-		camera.shaker.shake_rot(0.01, 0.1, 0.3)
-		var mult = 0.00001
+#		camera.shaker.shake_rot(0.01, 0.1, 0.3)
+		var mult = 0.0001
 		var amp = player_vel_squared * mult
 		camera.shaker.shake_pos(amp, 0.1, 0.3)
 
@@ -232,8 +232,8 @@ func on_player_hit(body):
 		if character.get_dummy():
 			body.apply_impact_impulse(character.get_dummy())
 
-		camera.shaker.shake_rot(0.02, 0.11, 0.5)
-		camera.shaker.shake_pos(10, 0.11, 0.5)
+#		camera.shaker.shake_rot(0.02, 0.11, 0.5)
+		camera.shaker.shake_pos(100 * body.damage, 0.11, 0.5)
 
 	# if medpack
 	if body.is_in_group("Pickup"):
@@ -253,8 +253,8 @@ func temp_hitflash():
 func on_weapon_recoiled(amp):
 	print("recoiling")
 	# shake camera
-	camera.shaker.shake_rot(0.01, 0.1, 0.3)
-	camera.shaker.shake_pos(10, 0.1, 0.3)
+#	camera.shaker.shake_rot(0.01, 0.1, 0.3)
+	camera.shaker.shake_pos(3 * amp, 0.1, 0.3)
 
 
 # equip weapon

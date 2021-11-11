@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scenes/character/weapons/guns/smg.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/character/hud/hud.tscn" type="PackedScene" id=2]
@@ -14,13 +14,14 @@
 [ext_resource path="res://Scenes/character/character_health.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/character/weapons/guns/shotgun.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/character/weapons/guns/rail_rifle.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/character/weapons/guns/Sword.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/flashlight.png" type="Texture" id=16]
+[ext_resource path="res://Scenes/character/Flashlight.gd" type="Script" id=17]
 
 [sub_resource type="CapsuleShape2D" id=1]
 height = 30.0
 
-[node name="PlayerBase" type="Node2D" groups=[
-"PlayerBase",
-]]
+[node name="PlayerBase" type="Node2D" groups=["PlayerBase"]]
 script = ExtResource( 10 )
 player_path = NodePath("KinematicCharacter")
 
@@ -38,20 +39,20 @@ position = Vector2( 0.17944, -16.9724 )
 scale = Vector2( 0.6, 0.6 )
 
 [node name="hip" parent="KinematicCharacter/Rig/Dolly/Skeleton2D" index="0"]
-position = Vector2( 86.2243, 36.7161 )
+position = Vector2( 86.1684, 35.5099 )
 
 [node name="hipL" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip" index="1"]
-rotation = -0.190637
+rotation = -0.161363
 
 [node name="kneeL" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip/hipL" index="0"]
-rotation = -0.68277
+rotation = -0.660807
 
 [node name="hipR" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip" index="2"]
-position = Vector2( -6.46982, 4.95449 )
-rotation = 0.588123
+position = Vector2( -6.68765, 5.78306 )
+rotation = 0.632021
 
 [node name="kneeR" parent="KinematicCharacter/Rig/Dolly/Skeleton2D/hip/hipR" index="0"]
-rotation = -1.51283
+rotation = -1.46264
 
 [node name="Hitbox" type="Area2D" parent="KinematicCharacter"]
 collision_layer = 18
@@ -71,6 +72,16 @@ visible = false
 position = Vector2( 0, -18.4026 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 8 )
+
+[node name="Flashlight" type="Light2D" parent="KinematicCharacter"]
+position = Vector2( 0, -45 )
+rotation = 1.5708
+scale = Vector2( 0.52, 0.65 )
+texture = ExtResource( 16 )
+offset = Vector2( 0, -480 )
+color = Color( 0.733333, 0.866667, 1, 1 )
+shadow_enabled = true
+script = ExtResource( 17 )
 
 [node name="GrappleGun" parent="KinematicCharacter" instance=ExtResource( 11 )]
 muzzle_path = NodePath("Muzzle")
@@ -96,6 +107,10 @@ shooter_path = NodePath("..")
 visible = false
 shooter_path = NodePath("..")
 
+[node name="WeaponMS" parent="KinematicCharacter" instance=ExtResource( 15 )]
+visible = false
+shooter_path = NodePath("..")
+
 [node name="Sprite3" type="Sprite" parent="KinematicCharacter"]
 visible = false
 texture = ExtResource( 8 )
@@ -104,7 +119,7 @@ texture = ExtResource( 8 )
 character_path = NodePath("../KinematicCharacter")
 anim_path = NodePath("../KinematicCharacter/Rig/AnimationTree")
 rig_path = NodePath("../KinematicCharacter/Rig")
-weapon_paths = [ NodePath("../KinematicCharacter/WeaponSMG"), NodePath("../KinematicCharacter/WeaponBR"), NodePath("../KinematicCharacter/WeaponSG"), NodePath("../KinematicCharacter/WeaponRR") ]
+weapon_paths = [ NodePath("../KinematicCharacter/WeaponSMG"), NodePath("../KinematicCharacter/WeaponBR"), NodePath("../KinematicCharacter/WeaponSG"), NodePath("../KinematicCharacter/WeaponRR"), NodePath("../KinematicCharacter/WeaponMS") ]
 grapple_path = NodePath("../KinematicCharacter/GrappleGun")
 camera_path = NodePath("../PlayerCamera")
 
@@ -112,9 +127,6 @@ camera_path = NodePath("../PlayerCamera")
 camera_path = NodePath("../PlayerCamera")
 player_path = NodePath("../KinematicCharacter")
 health_bar_path = NodePath("Hud/HealthBar")
-
-[node name="JumpPips" parent="Hud/Hud/MarginContainer" index="0"]
-margin_right = 960.0
 
 [node name="HealthBar" parent="Hud/Hud" index="1"]
 char_health_path = NodePath("../../../CharacterHealth")

@@ -22,7 +22,7 @@ __meta__ = {
 }
 
 [node name="JumpPips" type="HBoxContainer" parent="Hud/MarginContainer"]
-margin_right = 480.0
+margin_right = 960.0
 margin_bottom = 112.0
 alignment = 1
 __meta__ = {

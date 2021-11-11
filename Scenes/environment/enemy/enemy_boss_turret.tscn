@@ -50,9 +50,9 @@ cycle_interval = 0.1
 [node name="Muzzle" type="Node2D" parent="KinematicCharacter/Weapon"]
 
 [node name="Hitbox" type="Area2D" parent="KinematicCharacter"]
-monitorable = false
 collision_layer = 0
 collision_mask = 2
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicCharacter/Hitbox"]
 shape = SubResource( 3 )
@@ -106,5 +106,4 @@ enabled = true
 starting_health = 20
 
 [editable path="KinematicCharacter"]
-
 [editable path="KinematicCharacter/HealthBar"]

@@ -1,6 +1,7 @@
 class_name PhysicsPlatform
 extends KinematicBody2D
 
+export var is_kinematic = false
 export var colliders_group = "PhysicsPlatformCollider"
 export var initial_velocity: Vector2
 export var initial_velocity_angular: float
@@ -33,6 +34,11 @@ func _physics_process(delta):
 		print("dummy is null!")
 		return
 
+	if is_kinematic:
+		physics_dummy_instance.mode = RigidBody2D.MODE_KINEMATIC
+	else:
+		physics_dummy_instance.mode = RigidBody2D.MODE_RIGID
+
 	rotation = physics_dummy_instance.rotation
 	position = lerp(position, physics_dummy_instance.position, 0.9)
 	# not moveandcollide so it doesn't interact with player
@@ -43,6 +49,7 @@ func setup_dummy():
 
 	physics_dummy_instance = phyics_dummy_preload.instance()
 	physics_dummy_instance.position = position
+	physics_dummy_instance.rotation = rotation
 	get_parent().add_child(physics_dummy_instance)
 
 	# setup dummy colliders from array

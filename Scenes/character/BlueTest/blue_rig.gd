@@ -31,7 +31,7 @@ func reset_ik():
 
 # this shouldn't be accessible outside of the animator maybe should be on skeleton?
 func rotate_arm_aiming(global_point: Vector2):
-	var to_target = global_point - left_shoulder.global_position
+#	var to_target = global_point - left_shoulder.global_position
 	var angle
 
 	# hacky because of mirror flipping

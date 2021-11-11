@@ -24,9 +24,7 @@ angle = -314.5
 angle_random = 0.15
 scale = 7.0
 
-[node name="Bullet" type="RigidBody2D" groups=[
-"Bullet",
-]]
+[node name="Bullet" type="RigidBody2D" groups=["Bullet"]]
 position = Vector2( 0.125343, 0 )
 collision_layer = 2
 linear_damp = 0.0
@@ -53,5 +51,6 @@ process_material = SubResource( 2 )
 [node name="LifeTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="ActivationTimer" type="Timer" parent="."]
-one_shot = true
+[node name="Line2D" type="Line2D" parent="."]
+width = 5.0
+default_color = Color( 0.87451, 0.87451, 0.87451, 1 )
