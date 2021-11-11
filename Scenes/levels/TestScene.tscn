@@ -149,6 +149,7 @@ energy = 1.33
 
 [node name="KinematicCharacter" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1242.79, 782.363 )
+boost_limited = false
 
 [node name="Sprite" type="Sprite" parent="."]
 show_behind_parent = true
@@ -157,6 +158,7 @@ texture = ExtResource( 9 )
 
 [node name="TestTurret" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1209.26, 311.459 )
+player_path = NodePath("../KinematicCharacter")
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 8 )]
 player_path = NodePath("../KinematicCharacter")

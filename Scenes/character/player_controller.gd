@@ -14,6 +14,7 @@ export var health_path: NodePath = "../CharacterHealth"
 
 export var relative_directional_magwalk = false
 export var mouse_camera_rotation = false
+export var debug_draw_8_dir = false
 
 export var invul_time = 0.7
 
@@ -41,9 +42,6 @@ var shooting = false
 var magwalk_left = Vector2.LEFT
 var magwalk_right = Vector2.RIGHT
 
-var jumpDir_horizontal = ""
-var jumpDir_vertical = ""
-	
 
 func _ready():
 	# character connections
@@ -64,42 +62,31 @@ func _ready():
 # inputs do be handled here
 func _input(event):
 	# magwalk and boost
-	#var jumpDir_horizontal = ""
-	#var jumpDir_vertical = ""
-
 
 	if event.is_action_pressed("ui_left", false):
 		character.add_magwalk_direction(magwalk_left)
 		character.add_maneuver_direction(Vector2.LEFT)
-		jumpDir_horizontal = "left"
 	if event.is_action_released("ui_left"):
 		character.null_magwalk_direction()
 		character.add_maneuver_direction(Vector2.RIGHT)
-		jumpDir_horizontal = ""
 
 	if event.is_action_pressed("ui_right", false):
 		character.add_magwalk_direction(magwalk_right)
 		character.add_maneuver_direction(Vector2.RIGHT)
-		jumpDir_horizontal = "right"
 	if event.is_action_released("ui_right"):
 		character.null_magwalk_direction()
 		character.add_maneuver_direction(Vector2.LEFT)
-		jumpDir_horizontal = ""
 
 	if event.is_action_pressed("ui_up", false):
 		character.add_maneuver_direction(Vector2.UP)
 		character.leave_platform(100)
-		jumpDir_vertical = "up"
 	if event.is_action_released("ui_up"):
 		character.add_maneuver_direction(Vector2.DOWN)
-		jumpDir_vertical = ""
 
 	if event.is_action_pressed("ui_down", false):
 		character.add_maneuver_direction(Vector2.DOWN)
-		jumpDir_vertical = "down"
 	if event.is_action_released("ui_down"):
 		character.add_maneuver_direction(Vector2.UP)
-		jumpDir_vertical = ""
 
 	if event.is_action_pressed("ui_rotate_left"):
 		character.rotational_velocity = -character.rotational_speed
@@ -144,17 +131,9 @@ func _input(event):
 
 # input handler helpers
 func jump():
-
-
 	var movement = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	movement *= 100
-	
-	character.jump_towards = character.to_global(movement)
-	
-	
-	#Vector2 characterJump = Vector2.Zero()
 
-	
+	character.jump_towards = character.to_global(movement)
 	character.should_jump = true
 
 	invul(invul_time)
@@ -202,6 +181,7 @@ func _process(delta):
 		character.rotation = (view.get_mouse_position() - view.size / 2).angle()
 
 	update()
+
 
 func camera_relative_vector(vector: Vector2, player_rot) -> Vector2:
 	assert(camera != null && character != null)
@@ -294,10 +274,10 @@ func de_equip_weapon():
 	weapon = null
 
 
-
-
-#This is Jake's debugging to show the points of the 8 axis of rotation
 func _draw():
+	if not debug_draw_8_dir:
+		return
+
 	draw_circle(character.get_global_position(), 5, Color.white)
 
 	var dist = 100
@@ -321,4 +301,3 @@ func _draw():
 	draw_circle(character.to_global(TR), 5, Color.aqua)
 	draw_circle(character.to_global(BL), 5, Color.green)
 	draw_circle(character.to_global(BR), 5, Color.yellow)
-	
