@@ -134,6 +134,9 @@ char_health_path = NodePath("../../../CharacterHealth")
 [node name="PlayerCamera" parent="." instance=ExtResource( 3 )]
 scale = Vector2( 0.25, 0.25 )
 player_path = NodePath("../KinematicCharacter")
+camera_offset_scale = 0.5
+camera_offset_ease = 0.732043
+camera_offset_snap_axis = false
 
 [node name="CharacterHealth" parent="." instance=ExtResource( 12 )]
 starting_health = 5
