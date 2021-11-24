@@ -132,6 +132,7 @@ func _input(event):
 # input handler helpers
 func jump():
 	var movement = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	movement *= 100
 
 	character.jump_towards = character.to_global(movement)
 	character.should_jump = true
