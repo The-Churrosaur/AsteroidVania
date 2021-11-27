@@ -46,7 +46,7 @@ func _physics_process(delta):
 
 func setup_dummy():
 	# startup dummy
-
+	# return
 	physics_dummy_instance = phyics_dummy_preload.instance()
 	physics_dummy_instance.position = position
 	physics_dummy_instance.rotation = rotation
