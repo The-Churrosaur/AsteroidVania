@@ -6,7 +6,7 @@ extends KinematicBody2D
 export var rotational_velocity = 0
 export var rotational_speed = PI / 64
 export var magwalk_velocity = 100  # pixels/tick
-export var magwalk_gravity = 20  # velocity towards surface
+export var magwalk_gravity = 10  # velocity towards surface
 export var magwalk_ang_lerp = 0.2
 export var jump_impulse = 300
 export var gravity_ang_lerp = 0.05
@@ -144,10 +144,6 @@ func _physics_process(delta):
 	# if on platform -
 	# handle snapping, magbooting, jumping
 	else:
-		# rotate to platform
-#		print(platform_normal)
-		rotation = lerp_angle(rotation, platform_normal.angle() + PI / 2, magwalk_ang_lerp)
-
 		# check collisions with current platform
 		var collisions = update_collisions(platform)
 
@@ -156,14 +152,17 @@ func _physics_process(delta):
 			leave_platform()
 			return
 
-		var line = $Line2D
-		line.clear_points()
-		for i in collisions:
-			line.add_point(to_local(i))
+#		var line = $Line2D
+#		line.clear_points()
+#		for i in collisions:
+#			line.add_point(to_local(i))
 
 		# update normal --
-		platform_normal = update_normal(collisions[collisions.size() - 1])
-#		print(platform_normal)
+#		platform_normal = update_normal(collisions[collisions.size() - 1])
+
+		# update normal from last tick's moveandslide
+		if get_slide_count():
+			platform_normal = get_slide_collision(get_slide_count() - 1).normal
 
 		# update snap vector
 		var snap_vector = update_snap(snap_vector_length)
@@ -179,13 +178,18 @@ func _physics_process(delta):
 		displacement += platform_normal.tangent() * magwalk_velocity * -magwalk_dir.x
 
 		# for rotating platforms, calculates surface velocity and matches --
-		match_surface_velocity()
+		# unnecesary if calculating normal/movement vector from move_and_slide_with_snap
+#		match_surface_velocity()
 
 		# visualize displacement
 #		$Sprite.global_position = global_position + displacement
 
 		# do the move
 		move_and_slide_with_snap(displacement, snap_vector, platform_normal, false, 4, PI, false)
+
+		# rotate to platform
+#		print(platform_normal)
+		rotation = lerp_angle(rotation, platform_normal.angle() + PI / 2, magwalk_ang_lerp)
 
 	# jump - leaves platform and punts the dummy
 	# todo boost limiting on playercontroller/logic node
