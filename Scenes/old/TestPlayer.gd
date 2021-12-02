@@ -36,7 +36,7 @@ func on_body_shape_entered(body_id, body, body_shape, local_shape):
 	print("shape entered")
 
 	# handle hitting platform
-	if body.is_in_group("Platform"):
+	if body.is_in_group("WalkableSurface"):
 		print("hit platform: ", body)
 		on_platform = true
 		platform = body
@@ -51,7 +51,7 @@ func on_body_shape_entered(body_id, body, body_shape, local_shape):
 
 func on_body_shape_exited(body_id, body, body_shape, local_shape):
 	# if left platform
-	if body.is_in_group("Platform"):
+	if body.is_in_group("WalkableSurface"):
 		on_platform = false
 		mode = MODE_RIGID
 		print("mode: ", mode)
@@ -72,7 +72,7 @@ func _integrate_forces(state):
 #			var contact
 #			for i in count - 1:
 #				contact = state.get_contact_collider_object(i)
-#				if contact.is_in_group("Platform"):
+#				if contact.is_in_group("WalkableSurface"):
 #					platform_contact_idx = i
 
 		# get platform normal

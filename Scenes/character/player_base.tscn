@@ -26,17 +26,22 @@ script = ExtResource( 10 )
 player_path = NodePath("KinematicCharacter")
 
 [node name="KinematicCharacter" parent="." instance=ExtResource( 6 )]
-magwalk_velocity = 500
-jump_impulse = 500
+magwalk_velocity = 200
 boost_limited = true
 boost_number = 4
 boost_invul_time = 0.7
 maneuver_enabled = false
 hit_area_path = NodePath("Hitbox")
 
+[node name="CollisionShape2D" parent="KinematicCharacter" index="0"]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="CollisionShape2D" parent="KinematicCharacter/NormalDetector" index="0"]
+scale = Vector2( 0.5, 0.5 )
+
 [node name="Rig" parent="KinematicCharacter" instance=ExtResource( 5 )]
-position = Vector2( 0.17944, -16.9724 )
-scale = Vector2( 0.6, 0.6 )
+position = Vector2( 0.09, -8.486 )
+scale = Vector2( 0.3, 0.3 )
 
 [node name="hip" parent="KinematicCharacter/Rig/Dolly/Skeleton2D" index="0"]
 position = Vector2( 86.1684, 35.5099 )
@@ -59,7 +64,8 @@ collision_layer = 18
 collision_mask = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicCharacter/Hitbox"]
-position = Vector2( 0, -19.7855 )
+position = Vector2( 0, -9.893 )
+scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
 
 [node name="JetLight" parent="KinematicCharacter" instance=ExtResource( 9 )]

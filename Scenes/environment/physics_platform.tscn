@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/frame2.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/environment/physics_platform.gd" type="Script" id=2]
 
-[node name="PhysicsPlatform" type="KinematicBody2D" groups=["DummySlaved", "Platform", "WalkableSurface"]]
+[node name="PhysicsPlatform" type="KinematicBody2D" groups=["DummySlaved", "WalkableSurface"]]
 collision_layer = 9
 collision_mask = 9
 script = ExtResource( 2 )

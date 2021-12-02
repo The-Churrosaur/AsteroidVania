@@ -137,7 +137,7 @@ func _physics_process(delta):
 			# gravityplatforms override
 			if (
 				collision.collider.is_in_group("GravityPlatform")
-				|| magwalk_enabled && collision.collider.is_in_group("Platform")
+				|| magwalk_enabled && collision.collider.is_in_group("WalkableSurface")
 			):
 				enter_platform(collision)
 
