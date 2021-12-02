@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/environment/physics_platform.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/character/player_base.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/environment/puzzle/game_door.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/glass_asset.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/environment/physics_platform_nonwalkable.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/environment/puzzle/game_button.tscn" type="PackedScene" id=11]
 
@@ -172,6 +173,7 @@ polygon = PoolVector2Array( 2309.34, 265.106, 2309.99, -172.983, 2341.99, -172.9
 [node name="Glass Platform2" parent="Level 0/Glass" instance=ExtResource( 9 )]
 
 [node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Glass/Glass Platform2"]
+texture = ExtResource( 4 )
 polygon = PoolVector2Array( 67.7245, -576.228, 326.481, -576.276, 326.487, -544.276, 67.7305, -544.228 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Glass/Glass Platform2" groups=["PhysicsPlatformCollider"]]
@@ -230,7 +232,15 @@ polygon = PoolVector2Array( 1248.61, -193.936, 1495.89, -194.356, 1495.95, -162.
 [node name="Buttons" type="Node2D" parent="Level 0"]
 
 [node name="Button1" parent="Level 0/Buttons" instance=ExtResource( 11 )]
-position = Vector2( 387, -390 )
+position = Vector2( 390.535, -394.243 )
 scale = Vector2( 2, 2 )
 
+[node name="Button2" parent="Level 0/Buttons" instance=ExtResource( 11 )]
+position = Vector2( 1277.39, -857.52 )
+rotation = 3.14159
+scale = Vector2( 2, 2 )
+use_timer = true
+time_sec = 4.0
+
 [connection signal="down" from="Level 0/Buttons/Button1" to="Level 0/Doors/Door2/GameDoor" method="open"]
+[connection signal="hold" from="Level 0/Buttons/Button2" to="Level 0/Doors/Door3/GameDoor" method="hold"]
