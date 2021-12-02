@@ -4,7 +4,17 @@ var is_open = false
 
 
 func _ready():
-	pass
+	call_deferred("update_is_open")
+
+
+# override me
+func update_is_open():
+	if is_open:
+		print("door open")
+		$Label.text = "Door is open"
+	else:
+		print("door close")
+		$Label.text = "Door is closed"
 
 
 func set_open(should_open):
@@ -17,12 +27,7 @@ func set_open(should_open):
 
 	is_open = should_open
 
-	if is_open:
-		print("door open")
-		$Label.text = "Door is open"
-	else:
-		print("door close")
-		$Label.text = "Door is closed"
+	call_deferred("update_is_open")
 
 
 # signal receivers:

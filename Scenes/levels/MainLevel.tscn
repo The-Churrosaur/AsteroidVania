@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=2]
+[gd_scene load_steps=139 format=2]
 
 [ext_resource path="res://Scenes/environment/physics_platform.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/character/player_base.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Scenes/levels/edge_shape_mat_glass.tres" type="Resource" id=7]
 [ext_resource path="res://addons/rmsmartshape/shapes/shape_open.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/environment/physics_platform.gd" type="Script" id=9]
+[ext_resource path="res://Scenes/environment/puzzle/game_door.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/environment/puzzle/game_button.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 5 )
@@ -1139,7 +1141,7 @@ collision_polygon_node_path = NodePath("../CollisionPolygon2D")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/StaticBody2D2" groups=["PhysicsPlatformCollider"]]
 modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 325.702, -553.116, 549.337, -551.874, 549.292, -543.874, 325.658, -545.116 )
+polygon = PoolVector2Array( 325.702, -553.116, 549.337, -551.874, 549.293, -543.874, 325.658, -545.116 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Level 0/Nonwalkable walls"]
 
@@ -1398,8 +1400,10 @@ modulate = Color( 1, 1, 1, 0.3 )
 polygon = PoolVector2Array( 838.615, -161.451, 837.406, -352.846, 845.406, -352.896, 846.615, -161.501 )
 
 [node name="Doors" type="Node2D" parent="Level 0"]
+z_index = -1
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Level 0/Doors"]
+script = ExtResource( 10 )
 
 [node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Doors/StaticBody2D2"]
 script = ExtResource( 8 )
@@ -1421,6 +1425,7 @@ modulate = Color( 1, 1, 1, 0.3 )
 polygon = PoolVector2Array( 835.89, -551.015, 554.439, -550.892, 554.435, -558.892, 835.886, -559.015 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Level 0/Doors"]
+script = ExtResource( 10 )
 
 [node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Doors/StaticBody2D3"]
 script = ExtResource( 8 )
@@ -1442,6 +1447,7 @@ modulate = Color( 1, 1, 1, 0.3 )
 polygon = PoolVector2Array( 1250.78, -388.221, 1497.31, -387.143, 1497.27, -379.143, 1250.74, -380.221 )
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Level 0/Doors"]
+script = ExtResource( 10 )
 
 [node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Doors/StaticBody2D4"]
 script = ExtResource( 8 )
@@ -1461,3 +1467,10 @@ collision_polygon_node_path = NodePath("../CollisionPolygon2D")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Doors/StaticBody2D4"]
 modulate = Color( 1, 1, 1, 0.3 )
 polygon = PoolVector2Array( 1248.63, -181.936, 1495.91, -182.356, 1495.93, -174.356, 1248.65, -173.936 )
+
+[node name="Buttons" type="Node2D" parent="Level 0"]
+
+[node name="Button1" parent="Level 0/Buttons" instance=ExtResource( 11 )]
+position = Vector2( 387, -390 )
+
+[connection signal="down" from="Level 0/Buttons/Button1" to="Level 0/Doors/StaticBody2D2" method="open"]
