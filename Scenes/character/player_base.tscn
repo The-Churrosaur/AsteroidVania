@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/character/weapons/guns/smg.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/character/hud/hud.tscn" type="PackedScene" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://assets/flashlight.png" type="Texture" id=16]
 [ext_resource path="res://Scenes/character/Flashlight.gd" type="Script" id=17]
 [ext_resource path="res://assets/astroidvania.ogg" type="AudioStream" id=18]
+[ext_resource path="res://Scenes/character/MusicPlayer.gd" type="Script" id=19]
 
 [sub_resource type="CapsuleShape2D" id=1]
 height = 30.0
@@ -149,7 +150,7 @@ starting_health = 5
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
-autoplay = true
+script = ExtResource( 19 )
 
 [editable path="KinematicCharacter"]
 [editable path="KinematicCharacter/Rig"]
