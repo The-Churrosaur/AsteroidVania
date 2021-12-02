@@ -3,8 +3,8 @@ extends "res://Scenes/environment/puzzle/door.gd"
 export(Color) var closed_color = Color.white
 export(Color) var open_color = Color.saddlebrown
 
-onready var collider = $CollisionPolygon2D
-onready var sprite = $SS2D_Shape_Open2
+onready var collider = $"../CollisionPolygon2D"
+onready var sprite = $"../SS2D_Shape_Open2"
 
 
 func update_is_open():

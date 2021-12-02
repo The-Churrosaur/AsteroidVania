@@ -1,951 +1,10 @@
-[gd_scene load_steps=139 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/environment/physics_platform.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/character/player_base.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/rmsmartshape/shapes/point_array.gd" type="Script" id=3]
-[ext_resource path="res://addons/rmsmartshape/shapes/point.gd" type="Script" id=4]
-[ext_resource path="res://addons/rmsmartshape/vertex_properties.gd" type="Script" id=5]
-[ext_resource path="res://Scenes/levels/edge_shape_mat.tres" type="Resource" id=6]
-[ext_resource path="res://Scenes/levels/edge_shape_mat_glass.tres" type="Resource" id=7]
-[ext_resource path="res://addons/rmsmartshape/shapes/shape_open.gd" type="Script" id=8]
-[ext_resource path="res://Scenes/environment/physics_platform.gd" type="Script" id=9]
-[ext_resource path="res://Scenes/environment/puzzle/game_door.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/environment/puzzle/game_door.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/environment/physics_platform_nonwalkable.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/environment/puzzle/game_button.tscn" type="PackedScene" id=11]
-
-[sub_resource type="Resource" id=1]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=2]
-script = ExtResource( 4 )
-position = Vector2( 535.256, -550.368 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 1 )
-
-[sub_resource type="Resource" id=3]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=4]
-script = ExtResource( 4 )
-position = Vector2( 537.781, -957.841 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 3 )
-
-[sub_resource type="Resource" id=5]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=6]
-script = ExtResource( 4 )
-position = Vector2( 1072.32, -957.391 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 5 )
-
-[sub_resource type="Resource" id=7]
-script = ExtResource( 3 )
-_points = {
-43: SubResource( 2 ),
-44: SubResource( 4 ),
-45: SubResource( 6 )
-}
-_point_order = [ 43, 44, 45 ]
-_constraints = {
-}
-_next_key = 43
-
-[sub_resource type="Resource" id=8]
-script = ExtResource( 5 )
-texture_idx = 1
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=9]
-script = ExtResource( 4 )
-position = Vector2( 856.51, -544.068 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 8 )
-
-[sub_resource type="Resource" id=10]
-script = ExtResource( 5 )
-texture_idx = 2
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=11]
-script = ExtResource( 4 )
-position = Vector2( 857.53, -803.183 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 10 )
-
-[sub_resource type="Resource" id=12]
-script = ExtResource( 3 )
-_points = {
-43: SubResource( 9 ),
-44: SubResource( 11 )
-}
-_point_order = [ 43, 44 ]
-_constraints = {
-}
-_next_key = 43
-
-[sub_resource type="Resource" id=13]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=14]
-script = ExtResource( 4 )
-position = Vector2( 1014.05, -366.115 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 13 )
-
-[sub_resource type="Resource" id=15]
-script = ExtResource( 5 )
-texture_idx = 4
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=16]
-script = ExtResource( 4 )
-position = Vector2( 1013.26, -559.264 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 15 )
-
-[sub_resource type="Resource" id=17]
-script = ExtResource( 3 )
-_points = {
-43: SubResource( 14 ),
-44: SubResource( 16 )
-}
-_point_order = [ 43, 44 ]
-_constraints = {
-}
-_next_key = 43
-
-[sub_resource type="Resource" id=18]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=19]
-script = ExtResource( 4 )
-position = Vector2( 1230.26, -354.286 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 18 )
-
-[sub_resource type="Resource" id=20]
-script = ExtResource( 5 )
-texture_idx = 4
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=21]
-script = ExtResource( 4 )
-position = Vector2( 1229.23, -604.092 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 20 )
-
-[sub_resource type="Resource" id=22]
-script = ExtResource( 3 )
-_points = {
-43: SubResource( 19 ),
-44: SubResource( 21 )
-}
-_point_order = [ 43, 44 ]
-_constraints = {
-}
-_next_key = 46
-
-[sub_resource type="Resource" id=23]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=24]
-script = ExtResource( 4 )
-position = Vector2( 1225.53, -745.118 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 23 )
-
-[sub_resource type="Resource" id=25]
-script = ExtResource( 5 )
-texture_idx = 4
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=26]
-script = ExtResource( 4 )
-position = Vector2( 1225.39, -887.578 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 25 )
-
-[sub_resource type="Resource" id=27]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=28]
-script = ExtResource( 4 )
-position = Vector2( 1518, -887.689 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 27 )
-
-[sub_resource type="Resource" id=29]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=30]
-script = ExtResource( 4 )
-position = Vector2( 1519.2, -358.225 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 29 )
-
-[sub_resource type="Resource" id=31]
-script = ExtResource( 3 )
-_points = {
-43: SubResource( 24 ),
-44: SubResource( 26 ),
-46: SubResource( 28 ),
-47: SubResource( 30 )
-}
-_point_order = [ 43, 44, 46, 47 ]
-_constraints = {
-}
-_next_key = 46
-
-[sub_resource type="Resource" id=32]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=33]
-script = ExtResource( 4 )
-position = Vector2( 1500.2, -176.937 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 32 )
-
-[sub_resource type="Resource" id=34]
-script = ExtResource( 5 )
-texture_idx = 2
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=35]
-script = ExtResource( 4 )
-position = Vector2( 2370.03, -176.643 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 34 )
-
-[sub_resource type="Resource" id=36]
-script = ExtResource( 3 )
-_points = {
-47: SubResource( 33 ),
-48: SubResource( 35 )
-}
-_point_order = [ 47, 48 ]
-_constraints = {
-}
-_next_key = 46
-
-[sub_resource type="Resource" id=37]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=38]
-script = ExtResource( 4 )
-position = Vector2( 1215.88, 167.722 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 37 )
-
-[sub_resource type="Resource" id=39]
-script = ExtResource( 5 )
-texture_idx = 2
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=40]
-script = ExtResource( 4 )
-position = Vector2( 2042.31, 168.479 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 39 )
-
-[sub_resource type="Resource" id=41]
-script = ExtResource( 3 )
-_points = {
-47: SubResource( 38 ),
-48: SubResource( 40 )
-}
-_point_order = [ 47, 48 ]
-_constraints = {
-}
-_next_key = 46
-
-[sub_resource type="Resource" id=42]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=43]
-script = ExtResource( 4 )
-position = Vector2( 549.315, -547.874 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 42 )
-
-[sub_resource type="Resource" id=44]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=45]
-script = ExtResource( 4 )
-position = Vector2( 325.68, -549.116 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 44 )
-
-[sub_resource type="Resource" id=46]
-script = ExtResource( 3 )
-_points = {
-43: SubResource( 43 ),
-48: SubResource( 45 )
-}
-_point_order = [ 48, 43 ]
-_constraints = {
-}
-_next_key = 43
-
-[sub_resource type="Resource" id=47]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=48]
-script = ExtResource( 4 )
-position = Vector2( 839.705, -547.577 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 47 )
-
-[sub_resource type="Resource" id=49]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=50]
-script = ExtResource( 4 )
-position = Vector2( 1028.46, -547.707 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 49 )
-
-[sub_resource type="Resource" id=51]
-script = ExtResource( 3 )
-_points = {
-43: SubResource( 48 ),
-44: SubResource( 50 )
-}
-_point_order = [ 43, 44 ]
-_constraints = {
-}
-_next_key = 43
-
-[sub_resource type="Resource" id=52]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=53]
-script = ExtResource( 4 )
-position = Vector2( 835.467, -362.171 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 52 )
-
-[sub_resource type="Resource" id=54]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=55]
-script = ExtResource( 4 )
-position = Vector2( 1029.65, -363.49 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 54 )
-
-[sub_resource type="Resource" id=56]
-script = ExtResource( 3 )
-_points = {
-43: SubResource( 53 ),
-44: SubResource( 55 )
-}
-_point_order = [ 43, 44 ]
-_constraints = {
-}
-_next_key = 43
-
-[sub_resource type="Resource" id=57]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=58]
-script = ExtResource( 4 )
-position = Vector2( 846.437, -787.791 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 57 )
-
-[sub_resource type="Resource" id=59]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=60]
-script = ExtResource( 4 )
-position = Vector2( 924.83, -787.889 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 59 )
-
-[sub_resource type="Resource" id=61]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=62]
-script = ExtResource( 4 )
-position = Vector2( 924.271, -591.506 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 61 )
-
-[sub_resource type="Resource" id=63]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=64]
-script = ExtResource( 4 )
-position = Vector2( 1243.93, -592.3 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 63 )
-
-[sub_resource type="Resource" id=65]
-script = ExtResource( 3 )
-_points = {
-43: SubResource( 58 ),
-44: SubResource( 60 ),
-45: SubResource( 62 ),
-46: SubResource( 64 )
-}
-_point_order = [ 43, 44, 45, 46 ]
-_constraints = {
-}
-_next_key = 43
-
-[sub_resource type="Resource" id=66]
-script = ExtResource( 5 )
-texture_idx = -2
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=67]
-script = ExtResource( 4 )
-position = Vector2( 1085.16, -972.027 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 66 )
-
-[sub_resource type="Resource" id=68]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=69]
-script = ExtResource( 4 )
-position = Vector2( 1086.19, -750.246 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 68 )
-
-[sub_resource type="Resource" id=70]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=71]
-script = ExtResource( 4 )
-position = Vector2( 1242.82, -749.453 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 70 )
-
-[sub_resource type="Resource" id=72]
-script = ExtResource( 3 )
-_points = {
-44: SubResource( 67 ),
-45: SubResource( 69 ),
-46: SubResource( 71 )
-}
-_point_order = [ 44, 45, 46 ]
-_constraints = {
-}
-_next_key = 44
-
-[sub_resource type="Resource" id=73]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=74]
-script = ExtResource( 4 )
-position = Vector2( 1228.57, 199.704 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 73 )
-
-[sub_resource type="Resource" id=75]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=76]
-script = ExtResource( 4 )
-position = Vector2( 1229.59, -354.682 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 75 )
-
-[sub_resource type="Resource" id=77]
-script = ExtResource( 3 )
-_points = {
-45: SubResource( 74 ),
-46: SubResource( 76 )
-}
-_point_order = [ 45, 46 ]
-_constraints = {
-}
-_next_key = 44
-
-[sub_resource type="Resource" id=78]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=79]
-script = ExtResource( 4 )
-position = Vector2( 1515.69, -163.692 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 78 )
-
-[sub_resource type="Resource" id=80]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=81]
-script = ExtResource( 4 )
-position = Vector2( 1518.8, -358.933 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 80 )
-
-[sub_resource type="Resource" id=82]
-script = ExtResource( 3 )
-_points = {
-45: SubResource( 79 ),
-46: SubResource( 81 )
-}
-_point_order = [ 45, 46 ]
-_constraints = {
-}
-_next_key = 44
-
-[sub_resource type="Resource" id=83]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=84]
-script = ExtResource( 4 )
-position = Vector2( 1747.25, 182.678 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 83 )
-
-[sub_resource type="Resource" id=85]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=86]
-script = ExtResource( 4 )
-position = Vector2( 1747.26, -13.9694 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 85 )
-
-[sub_resource type="Resource" id=87]
-script = ExtResource( 3 )
-_points = {
-45: SubResource( 84 ),
-46: SubResource( 86 )
-}
-_point_order = [ 45, 46 ]
-_constraints = {
-}
-_next_key = 44
-
-[sub_resource type="Resource" id=88]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=89]
-script = ExtResource( 4 )
-position = Vector2( 2036.52, 266.408 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 88 )
-
-[sub_resource type="Resource" id=90]
-script = ExtResource( 5 )
-texture_idx = 2
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=91]
-script = ExtResource( 4 )
-position = Vector2( 2036.02, -11.6263 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 90 )
-
-[sub_resource type="Resource" id=92]
-script = ExtResource( 3 )
-_points = {
-45: SubResource( 89 ),
-46: SubResource( 91 )
-}
-_point_order = [ 45, 46 ]
-_constraints = {
-}
-_next_key = 44
-
-[sub_resource type="Resource" id=93]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=94]
-script = ExtResource( 4 )
-position = Vector2( 2325.34, 265.13 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 93 )
-
-[sub_resource type="Resource" id=95]
-script = ExtResource( 5 )
-texture_idx = 2
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=96]
-script = ExtResource( 4 )
-position = Vector2( 2325.99, -172.959 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 95 )
-
-[sub_resource type="Resource" id=97]
-script = ExtResource( 3 )
-_points = {
-45: SubResource( 94 ),
-46: SubResource( 96 )
-}
-_point_order = [ 45, 46 ]
-_constraints = {
-}
-_next_key = 44
-
-[sub_resource type="Resource" id=98]
-script = ExtResource( 5 )
-texture_idx = 2
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=99]
-script = ExtResource( 4 )
-position = Vector2( 326.484, -560.276 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 98 )
-
-[sub_resource type="Resource" id=100]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=101]
-script = ExtResource( 4 )
-position = Vector2( 67.7275, -560.228 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 100 )
-
-[sub_resource type="Resource" id=102]
-script = ExtResource( 3 )
-_points = {
-43: SubResource( 99 ),
-48: SubResource( 101 )
-}
-_point_order = [ 48, 43 ]
-_constraints = {
-}
-_next_key = 43
-
-[sub_resource type="Resource" id=103]
-script = ExtResource( 5 )
-texture_idx = 3
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=104]
-script = ExtResource( 4 )
-position = Vector2( 2309.32, 257.415 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 103 )
-
-[sub_resource type="Resource" id=105]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=106]
-script = ExtResource( 4 )
-position = Vector2( 2051.94, 257.201 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 105 )
-
-[sub_resource type="Resource" id=107]
-script = ExtResource( 3 )
-_points = {
-43: SubResource( 104 ),
-48: SubResource( 106 )
-}
-_point_order = [ 48, 43 ]
-_constraints = {
-}
-_next_key = 43
-
-[sub_resource type="Resource" id=108]
-script = ExtResource( 5 )
-texture_idx = 2
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=109]
-script = ExtResource( 4 )
-position = Vector2( 841.406, -352.871 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 108 )
-
-[sub_resource type="Resource" id=110]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=111]
-script = ExtResource( 4 )
-position = Vector2( 842.615, -161.476 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 110 )
-
-[sub_resource type="Resource" id=112]
-script = ExtResource( 3 )
-_points = {
-43: SubResource( 109 ),
-48: SubResource( 111 )
-}
-_point_order = [ 48, 43 ]
-_constraints = {
-}
-_next_key = 43
-
-[sub_resource type="Resource" id=113]
-script = ExtResource( 5 )
-texture_idx = 2
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=114]
-script = ExtResource( 4 )
-position = Vector2( 554.437, -554.892 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 113 )
-
-[sub_resource type="Resource" id=115]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=116]
-script = ExtResource( 4 )
-position = Vector2( 835.888, -555.015 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 115 )
-
-[sub_resource type="Resource" id=117]
-script = ExtResource( 3 )
-_points = {
-43: SubResource( 114 ),
-48: SubResource( 116 )
-}
-_point_order = [ 48, 43 ]
-_constraints = {
-}
-_next_key = 43
-
-[sub_resource type="Resource" id=118]
-script = ExtResource( 5 )
-texture_idx = 4
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=119]
-script = ExtResource( 4 )
-position = Vector2( 1497.29, -383.143 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 118 )
-
-[sub_resource type="Resource" id=120]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=121]
-script = ExtResource( 4 )
-position = Vector2( 1250.76, -384.221 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 120 )
-
-[sub_resource type="Resource" id=122]
-script = ExtResource( 3 )
-_points = {
-43: SubResource( 119 ),
-48: SubResource( 121 )
-}
-_point_order = [ 48, 43 ]
-_constraints = {
-}
-_next_key = 43
-
-[sub_resource type="Resource" id=123]
-script = ExtResource( 5 )
-texture_idx = 2
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=124]
-script = ExtResource( 4 )
-position = Vector2( 1495.92, -178.356 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 123 )
-
-[sub_resource type="Resource" id=125]
-script = ExtResource( 5 )
-texture_idx = 0
-flip = false
-width = 1.0
-
-[sub_resource type="Resource" id=126]
-script = ExtResource( 4 )
-position = Vector2( 1248.64, -177.936 )
-point_in = Vector2( 0, 0 )
-point_out = Vector2( 0, 0 )
-properties = SubResource( 125 )
-
-[sub_resource type="Resource" id=127]
-script = ExtResource( 3 )
-_points = {
-43: SubResource( 124 ),
-48: SubResource( 126 )
-}
-_point_order = [ 48, 43 ]
-_constraints = {
-}
-_next_key = 43
 
 [node name="Node2D" type="Node2D"]
 __meta__ = {
@@ -953,10 +12,12 @@ __meta__ = {
 }
 
 [node name="PlayerBase" parent="." instance=ExtResource( 2 )]
-position = Vector2( 32, -8 )
+position = Vector2( -57.28, 219.2 )
+z_index = 1
 
 [node name="Level 0" type="Node2D" parent="."]
 position = Vector2( -132.827, 438.814 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="Walkable walls" type="Node2D" parent="Level 0"]
 
@@ -968,509 +29,208 @@ polygon = PoolVector2Array( 909.03, -129.15, 514.28, -128.632, 514.225, -160.632
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Walkable walls/Walkable Platform" groups=["PhysicsPlatformCollider"]]
 polygon = PoolVector2Array( 909.03, -129.15, 514.28, -128.632, 514.225, -160.632, 515.543, -308.195, 515.368, -313.123, 514.864, -317.3, 514.078, -321.02, 513.051, -324.33, 511.814, -327.285, 510.385, -329.942, 508.773, -332.349, 506.978, -334.551, 504.995, -336.578, 502.822, -338.449, 500.46, -340.174, 498.133, -341.637, 492.32, -344.52, 486.294, -346.689, 480.035, -348.308, 474.005, -349.392, 462.557, -350.415, 450.515, -350.177, 35.55, -353.329, 35.7986, -385.328, 36.3387, -564.533, 68.3385, -564.425, 67.7984, -385.219, 450.351, -382.177, 463.686, -382.395, 478.245, -381.11, 486.881, -379.567, 495.762, -377.256, 504.873, -373.955, 513.718, -369.585, 518.392, -366.678, 522.733, -363.499, 526.905, -359.9, 530.849, -355.862, 534.505, -351.373, 537.807, -346.435, 540.697, -341.06, 543.123, -335.27, 545.044, -329.089, 546.432, -322.542, 547.268, -315.647, 547.539, -308.669, 546.224, -160.38, 908.976, -161.15 )
 
-[node name="StaticBody2D2" type="KinematicBody2D" parent="Level 0/Walkable walls" groups=["DummySlaved", "WalkableSurface"]]
-collision_layer = 9
-collision_mask = 9
-script = ExtResource( 9 )
+[node name="Walkable Platform2" parent="Level 0/Walkable walls" instance=ExtResource( 1 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Walkable walls/StaticBody2D2"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 7 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Walkable walls/Walkable Platform2"]
+polygon = PoolVector2Array( 519.256, -550.467, 521.795, -973.94, 553.794, -973.742, 1072.33, -973.391, 1072.31, -941.391, 553.767, -941.742, 551.256, -550.269 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Walkable walls/StaticBody2D2" groups=["PhysicsPlatformCollider"]]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 531.256, -550.393, 533.784, -961.866, 541.784, -961.816, 1072.32, -961.391, 1072.32, -953.391, 541.778, -953.816, 539.256, -550.343 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Walkable walls/Walkable Platform2" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 519.256, -550.467, 521.795, -973.94, 553.794, -973.742, 1072.33, -973.391, 1072.31, -941.391, 553.767, -941.742, 551.256, -550.269 )
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Level 0/Walkable walls" groups=["DummySlaved", "WalkableSurface"]]
+[node name="Walkable Platform3" parent="Level 0/Walkable walls" instance=ExtResource( 1 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Walkable walls/StaticBody2D3"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 12 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Walkable walls/Walkable Platform3"]
+polygon = PoolVector2Array( 840.51, -544.131, 841.53, -803.246, 873.53, -803.12, 872.51, -544.005 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Walkable walls/StaticBody2D3" groups=["PhysicsPlatformCollider"]]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 852.51, -544.084, 853.53, -803.199, 861.53, -803.167, 860.51, -544.052 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Walkable walls/Walkable Platform3" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 840.51, -544.131, 841.53, -803.246, 873.53, -803.12, 872.51, -544.005 )
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="Level 0/Walkable walls" groups=["DummySlaved", "WalkableSurface"]]
-collision_layer = 2
-collision_mask = 2
+[node name="Walkable Platform4" parent="Level 0/Walkable walls" instance=ExtResource( 1 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Walkable walls/StaticBody2D4"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 17 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Walkable walls/Walkable Platform4"]
+polygon = PoolVector2Array( 998.05, -366.05, 997.26, -559.199, 1029.26, -559.329, 1030.05, -366.18 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Walkable walls/StaticBody2D4" groups=["PhysicsPlatformCollider"]]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 1010.05, -366.099, 1009.26, -559.248, 1017.26, -559.28, 1018.05, -366.131 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Walkable walls/Walkable Platform4" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 998.05, -366.05, 997.26, -559.199, 1029.26, -559.329, 1030.05, -366.18 )
 
-[node name="StaticBody2D5" type="StaticBody2D" parent="Level 0/Walkable walls" groups=["DummySlaved", "WalkableSurface"]]
+[node name="Walkable Platform5" parent="Level 0/Walkable walls" instance=ExtResource( 1 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Walkable walls/StaticBody2D5"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 22 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Walkable walls/Walkable Platform5"]
+polygon = PoolVector2Array( 1214.26, -354.22, 1213.23, -604.026, 1245.23, -604.158, 1246.26, -354.352 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Walkable walls/StaticBody2D5" groups=["PhysicsPlatformCollider"]]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 1226.26, -354.27, 1225.23, -604.076, 1233.23, -604.108, 1234.26, -354.302 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Walkable walls/Walkable Platform5" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 1214.26, -354.22, 1213.23, -604.026, 1245.23, -604.158, 1246.26, -354.352 )
 
-[node name="StaticBody2D6" type="StaticBody2D" parent="Level 0/Walkable walls" groups=["DummySlaved", "WalkableSurface"]]
+[node name="Walkable Platform6" parent="Level 0/Walkable walls" instance=ExtResource( 1 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Walkable walls/StaticBody2D6"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 31 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Walkable walls/Walkable Platform6"]
+polygon = PoolVector2Array( 1209.53, -745.102, 1209.38, -903.562, 1241.38, -903.594, 1533.99, -903.725, 1534.01, -871.725, 1535.2, -358.261, 1503.2, -358.189, 1502.01, -871.653, 1241.4, -871.594, 1241.53, -745.134 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Walkable walls/StaticBody2D6" groups=["PhysicsPlatformCollider"]]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 1221.53, -745.114, 1221.39, -891.574, 1229.39, -891.582, 1522, -891.698, 1522, -883.698, 1523.2, -358.234, 1515.2, -358.216, 1514, -883.68, 1229.39, -883.582, 1229.53, -745.122 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Walkable walls/Walkable Platform6" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 1209.53, -745.102, 1209.38, -903.562, 1241.38, -903.594, 1533.99, -903.725, 1534.01, -871.725, 1535.2, -358.261, 1503.2, -358.189, 1502.01, -871.653, 1241.4, -871.594, 1241.53, -745.134 )
 
-[node name="StaticBody2D7" type="StaticBody2D" parent="Level 0/Walkable walls" groups=["DummySlaved", "WalkableSurface"]]
+[node name="Walkable Platform7" parent="Level 0/Walkable walls" instance=ExtResource( 1 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Walkable walls/StaticBody2D7"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 36 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Walkable walls/Walkable Platform7"]
+polygon = PoolVector2Array( 1500.21, -192.937, 2370.04, -192.643, 2370.02, -160.643, 1500.19, -160.937 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Walkable walls/StaticBody2D7" groups=["PhysicsPlatformCollider"]]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 1500.2, -180.937, 2370.03, -180.643, 2370.03, -172.643, 1500.2, -172.937 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Walkable walls/Walkable Platform7" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 1500.21, -192.937, 2370.04, -192.643, 2370.02, -160.643, 1500.19, -160.937 )
 
-[node name="StaticBody2D8" type="StaticBody2D" parent="Level 0/Walkable walls" groups=["DummySlaved", "WalkableSurface"]]
+[node name="Walkable Platform8" parent="Level 0/Walkable walls" instance=ExtResource( 1 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Walkable walls/StaticBody2D8"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 41 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Walkable walls/Walkable Platform8"]
+polygon = PoolVector2Array( 1215.89, 151.722, 2042.32, 152.479, 2042.3, 184.479, 1215.87, 183.722 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Walkable walls/StaticBody2D8" groups=["PhysicsPlatformCollider"]]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 1215.88, 163.722, 2042.31, 164.479, 2042.31, 172.479, 1215.88, 171.722 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Walkable walls/Walkable Platform8" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 1215.89, 151.722, 2042.32, 152.479, 2042.3, 184.479, 1215.87, 183.722 )
 
 [node name="Nonwalkable walls" type="Node2D" parent="Level 0"]
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Level 0/Nonwalkable walls"]
+[node name="Nonwalkable Platform2" parent="Level 0/Nonwalkable walls" instance=ExtResource( 9 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Nonwalkable walls/StaticBody2D2"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 46 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform2"]
+polygon = PoolVector2Array( 325.769, -565.116, 549.404, -563.874, 549.226, -531.874, 325.591, -533.116 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/StaticBody2D2" groups=["PhysicsPlatformCollider"]]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 325.702, -553.116, 549.337, -551.874, 549.293, -543.874, 325.658, -545.116 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform2" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 325.769, -565.116, 549.404, -563.874, 549.226, -531.874, 325.591, -533.116 )
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Level 0/Nonwalkable walls"]
+[node name="Nonwalkable Platform3" parent="Level 0/Nonwalkable walls" instance=ExtResource( 9 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Nonwalkable walls/StaticBody2D3"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 51 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform3"]
+polygon = PoolVector2Array( 839.694, -563.577, 1028.45, -563.707, 1028.47, -531.707, 839.716, -531.577 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/StaticBody2D3"]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 839.702, -551.577, 1028.46, -551.707, 1028.46, -543.707, 839.708, -543.577 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform3" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 839.694, -563.577, 1028.45, -563.707, 1028.47, -531.707, 839.716, -531.577 )
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="Level 0/Nonwalkable walls"]
+[node name="Nonwalkable Platform4" parent="Level 0/Nonwalkable walls" instance=ExtResource( 9 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Nonwalkable walls/StaticBody2D4"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 56 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform4"]
+polygon = PoolVector2Array( 835.358, -378.171, 1029.54, -379.49, 1029.76, -347.49, 835.576, -346.171 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/StaticBody2D4"]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 835.44, -366.171, 1029.62, -367.49, 1029.68, -359.49, 835.494, -358.171 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform4" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 835.358, -378.171, 1029.54, -379.49, 1029.76, -347.49, 835.576, -346.171 )
 
-[node name="StaticBody2D5" type="StaticBody2D" parent="Level 0/Nonwalkable walls"]
+[node name="Nonwalkable Platform5" parent="Level 0/Nonwalkable walls" instance=ExtResource( 9 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Nonwalkable walls/StaticBody2D5"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 65 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform5"]
+polygon = PoolVector2Array( 846.417, -803.791, 940.81, -803.843, 940.85, -771.843, 940.231, -607.46, 1243.89, -608.3, 1243.97, -576.3, 908.311, -575.552, 908.231, -607.551, 908.85, -771.935, 846.457, -771.791 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/StaticBody2D5"]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 846.432, -791.791, 928.825, -791.878, 928.835, -783.878, 928.261, -595.495, 1243.92, -596.3, 1243.94, -588.3, 920.281, -587.517, 920.261, -595.517, 920.835, -783.9, 846.442, -783.791 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform5" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 846.417, -803.791, 940.81, -803.843, 940.85, -771.843, 940.231, -607.46, 1243.89, -608.3, 1243.97, -576.3, 908.311, -575.552, 908.231, -607.551, 908.85, -771.935, 846.457, -771.791 )
 
-[node name="StaticBody2D6" type="StaticBody2D" parent="Level 0/Nonwalkable walls"]
+[node name="Nonwalkable Platform6" parent="Level 0/Nonwalkable walls" instance=ExtResource( 9 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Nonwalkable walls/StaticBody2D6"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 72 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform6"]
+polygon = PoolVector2Array( 846.417, -803.791, 940.81, -803.843, 940.85, -771.843, 940.231, -607.46, 1243.89, -608.3, 1243.97, -576.3, 908.311, -575.552, 908.231, -607.551, 908.85, -771.935, 846.457, -771.791 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/StaticBody2D6"]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 1089.16, -972.046, 1090.21, -754.264, 1242.84, -753.453, 1242.8, -745.453, 1082.17, -746.227, 1082.21, -754.227, 1081.16, -972.008 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform6" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 846.417, -803.791, 940.81, -803.843, 940.85, -771.843, 940.231, -607.46, 1243.89, -608.3, 1243.97, -576.3, 908.311, -575.552, 908.231, -607.551, 908.85, -771.935, 846.457, -771.791 )
 
-[node name="StaticBody2D7" type="StaticBody2D" parent="Level 0/Nonwalkable walls"]
+[node name="Nonwalkable Platform7" parent="Level 0/Nonwalkable walls" instance=ExtResource( 9 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Nonwalkable walls/StaticBody2D7"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 77 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform7"]
+polygon = PoolVector2Array( 1212.57, 199.675, 1213.59, -354.711, 1245.59, -354.653, 1244.57, 199.733 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/StaticBody2D7"]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 1224.57, 199.697, 1225.59, -354.689, 1233.59, -354.675, 1232.57, 199.711 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform7" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 1212.57, 199.675, 1213.59, -354.711, 1245.59, -354.653, 1244.57, 199.733 )
 
-[node name="StaticBody2D8" type="StaticBody2D" parent="Level 0/Nonwalkable walls"]
+[node name="Nonwalkable Platform8" parent="Level 0/Nonwalkable walls" instance=ExtResource( 9 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Nonwalkable walls/StaticBody2D8"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 82 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform8"]
+polygon = PoolVector2Array( 1499.69, -163.947, 1502.8, -359.188, 1534.8, -358.678, 1531.69, -163.437 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/StaticBody2D8"]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 1511.69, -163.756, 1514.8, -358.997, 1522.8, -358.869, 1519.69, -163.628 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform8" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 1499.69, -163.947, 1502.8, -359.188, 1534.8, -358.678, 1531.69, -163.437 )
 
-[node name="StaticBody2D9" type="StaticBody2D" parent="Level 0/Nonwalkable walls"]
+[node name="Nonwalkable Platform9" parent="Level 0/Nonwalkable walls" instance=ExtResource( 9 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Nonwalkable walls/StaticBody2D9"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 87 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform9"]
+polygon = PoolVector2Array( 1731.25, 182.677, 1731.26, -13.9702, 1763.26, -13.9686, 1763.25, 182.679 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/StaticBody2D9"]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 1743.25, 182.678, 1743.26, -13.9696, 1751.26, -13.9692, 1751.25, 182.678 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform9" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 1731.25, 182.677, 1731.26, -13.9702, 1763.26, -13.9686, 1763.25, 182.679 )
 
-[node name="StaticBody2D10" type="StaticBody2D" parent="Level 0/Nonwalkable walls"]
+[node name="Nonwalkable Platform10" parent="Level 0/Nonwalkable walls" instance=ExtResource( 9 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Nonwalkable walls/StaticBody2D10"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 92 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform10"]
+polygon = PoolVector2Array( 2020.52, 266.437, 2020.02, -11.5975, 2052.02, -11.6551, 2052.52, 266.379 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/StaticBody2D10"]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 2032.52, 266.415, 2032.02, -11.6191, 2040.02, -11.6335, 2040.52, 266.401 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform10" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 2020.52, 266.437, 2020.02, -11.5975, 2052.02, -11.6551, 2052.52, 266.379 )
 
-[node name="StaticBody2D11" type="StaticBody2D" parent="Level 0/Nonwalkable walls"]
+[node name="Nonwalkable Platform11" parent="Level 0/Nonwalkable walls" instance=ExtResource( 9 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Nonwalkable walls/StaticBody2D11"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 97 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform11"]
+polygon = PoolVector2Array( 2309.34, 265.106, 2309.99, -172.983, 2341.99, -172.935, 2341.34, 265.154 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/StaticBody2D11"]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 2321.34, 265.124, 2321.99, -172.965, 2329.99, -172.953, 2329.34, 265.136 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Nonwalkable walls/Nonwalkable Platform11" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 2309.34, 265.106, 2309.99, -172.983, 2341.99, -172.935, 2341.34, 265.154 )
 
 [node name="Glass" type="Node2D" parent="Level 0"]
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Level 0/Glass"]
+[node name="Glass Platform2" parent="Level 0/Glass" instance=ExtResource( 9 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Glass/StaticBody2D2"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 102 )
-material_overrides = {
-}
-shape_material = ExtResource( 7 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Glass/Glass Platform2"]
+polygon = PoolVector2Array( 67.7245, -576.228, 326.481, -576.276, 326.487, -544.276, 67.7305, -544.228 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Glass/StaticBody2D2"]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 67.7268, -564.228, 326.483, -564.276, 326.485, -556.276, 67.7282, -556.228 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Glass/Glass Platform2" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 67.7245, -576.228, 326.481, -576.276, 326.487, -544.276, 67.7305, -544.228 )
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Level 0/Glass"]
+[node name="Glass Platform3" parent="Level 0/Glass" instance=ExtResource( 9 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Glass/StaticBody2D3"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 107 )
-material_overrides = {
-}
-shape_material = ExtResource( 7 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Glass/Glass Platform3"]
+polygon = PoolVector2Array( 2051.95, 241.201, 2309.33, 241.415, 2309.31, 273.415, 2051.93, 273.201 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Glass/StaticBody2D3"]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 2051.94, 253.201, 2309.32, 253.415, 2309.32, 261.415, 2051.94, 261.201 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Glass/Glass Platform3" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 2051.95, 241.201, 2309.33, 241.415, 2309.31, 273.415, 2051.93, 273.201 )
 
 [node name="Spikes" type="Node2D" parent="Level 0"]
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Level 0/Spikes"]
+[node name="Spikes" parent="Level 0/Spikes" instance=ExtResource( 9 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Spikes/StaticBody2D2"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 112 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Spikes/Spikes"]
+polygon = PoolVector2Array( 826.615, -161.375, 825.406, -352.77, 857.406, -352.972, 858.615, -161.577 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Spikes/StaticBody2D2"]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 838.615, -161.451, 837.406, -352.846, 845.406, -352.896, 846.615, -161.501 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Spikes/Spikes" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 826.615, -161.375, 825.406, -352.77, 857.406, -352.972, 858.615, -161.577 )
 
 [node name="Doors" type="Node2D" parent="Level 0"]
-z_index = -1
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Level 0/Doors"]
-script = ExtResource( 10 )
+[node name="Door2" parent="Level 0/Doors" instance=ExtResource( 9 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Doors/StaticBody2D2"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 117 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Doors/Door2"]
+polygon = PoolVector2Array( 835.895, -539.015, 554.444, -538.892, 554.43, -570.892, 835.881, -571.015 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Doors/StaticBody2D2"]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 835.89, -551.015, 554.439, -550.892, 554.435, -558.892, 835.886, -559.015 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Doors/Door2" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 835.895, -539.015, 554.444, -538.892, 554.43, -570.892, 835.881, -571.015 )
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Level 0/Doors"]
-script = ExtResource( 10 )
+[node name="GameDoor" parent="Level 0/Doors/Door2" instance=ExtResource( 3 )]
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Doors/StaticBody2D3"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 122 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="Door3" parent="Level 0/Doors" instance=ExtResource( 9 )]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Doors/StaticBody2D3"]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 1250.78, -388.221, 1497.31, -387.143, 1497.27, -379.143, 1250.74, -380.221 )
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Doors/Door3"]
+polygon = PoolVector2Array( 1250.83, -400.221, 1497.36, -399.143, 1497.22, -367.143, 1250.69, -368.221 )
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="Level 0/Doors"]
-script = ExtResource( 10 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Doors/Door3" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 1250.83, -400.221, 1497.36, -399.143, 1497.22, -367.143, 1250.69, -368.221 )
 
-[node name="SS2D_Shape_Open2" type="Node2D" parent="Level 0/Doors/StaticBody2D4"]
-script = ExtResource( 8 )
-curve_bake_interval = 20.008
-_points = SubResource( 127 )
-material_overrides = {
-}
-shape_material = ExtResource( 6 )
-tessellation_stages = 5
-tessellation_tolerence = 4.0
-flip_edges = false
-render_edges = true
-collision_size = 8.0
-collision_offset = 1.0
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+[node name="GameDoor" parent="Level 0/Doors/Door3" instance=ExtResource( 3 )]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Doors/StaticBody2D4"]
-modulate = Color( 1, 1, 1, 0.3 )
-polygon = PoolVector2Array( 1248.63, -181.936, 1495.91, -182.356, 1495.93, -174.356, 1248.65, -173.936 )
+[node name="Door4" parent="Level 0/Doors" instance=ExtResource( 9 )]
+
+[node name="SS2D_Shape_Open2" type="Polygon2D" parent="Level 0/Doors/Door4"]
+polygon = PoolVector2Array( 1248.61, -193.936, 1495.89, -194.356, 1495.95, -162.356, 1248.67, -161.936 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level 0/Doors/Door4" groups=["PhysicsPlatformCollider"]]
+polygon = PoolVector2Array( 1248.61, -193.936, 1495.89, -194.356, 1495.95, -162.356, 1248.67, -161.936 )
+
+[node name="GameDoor" parent="Level 0/Doors/Door4" instance=ExtResource( 3 )]
 
 [node name="Buttons" type="Node2D" parent="Level 0"]
 
 [node name="Button1" parent="Level 0/Buttons" instance=ExtResource( 11 )]
 position = Vector2( 387, -390 )
+scale = Vector2( 2, 2 )
 
-[connection signal="down" from="Level 0/Buttons/Button1" to="Level 0/Doors/StaticBody2D2" method="open"]
+[connection signal="down" from="Level 0/Buttons/Button1" to="Level 0/Doors/Door2/GameDoor" method="open"]
